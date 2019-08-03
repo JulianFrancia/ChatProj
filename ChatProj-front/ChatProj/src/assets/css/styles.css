@@ -1,0 +1,40 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+body {
+  background: linear-gradient(black 20%, #158006 90%, #34e000);
+  background-attachment: fixed;
+}
+
+.main-container {
+  width: 100%;
+}
+
+#login-tittle {
+  color: white;
+  display: inline-block;
+  font-family: sans-serif;
+  font-size: 250%;
+  border-bottom: 6px solid #4caf50;
+  margin-bottom: 10%;
+  padding-bottom: 5%;
+}
+
+#login-form {
+  width: 17%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.textbox-form {
+  width: 100%;
+  overflow: hidden;
+  font-size: 190%;
+  padding: 10% 0;
+  margin: 10% 0;
+  border-bottom: 1px solid #4caf50;
+}
