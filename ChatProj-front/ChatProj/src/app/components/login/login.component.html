@@ -1,20 +1,24 @@
-
 <div class="main-container">
-  <div id="login-form">
-    <h1 id="login-tittle">Login</h1>
-    <div class="textbox-form">
-      <i class="fas fa-user"></i>
-      <input type="text" placeholder="usuario" name="user" #user />
-    </div>
+  <form class="login-form">
+    <!--USER-->
+    <label for="user" class="formRow--input-wrapper js-inputWrapper">
+      <input
+        type="text"
+        class="formRow--input js-input"
+        name="user"
+        placeholder="Usuario"
+      />
+    </label>
 
-    <div class="textbox-form">
+    <!--PASSWORD-->
+    <label for="password" class="formRow--input-wrapper js-inputWrapper">
       <input
         type="password"
-        placeholder="contraseña"
+        class="formRow--input js-input"
         name="password"
-        #password
+        placeholder="Contraseña"
       />
-    </div>
-    <input type="submit" value="Iniciar sesión" />
-  </div>
+    </label>
+    <input type="submit" value="Iniciar sesion" id="btn" />
+  </form>
 </div>
