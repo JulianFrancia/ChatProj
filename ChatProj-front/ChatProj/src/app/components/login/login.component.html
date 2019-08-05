@@ -1,15 +1,20 @@
 <div class="main-container">
-  <form class="login-form">
+  <form #loginForm="ngForm" class="login-form" (ngSubmit)="onSubmit()">
+    <!--TITTLE DEL LOGIN-->
+    <h1 id="login-tittle">Login</h1>
     <!--USER-->
-    <label for="user" class="formRow--input-wrapper js-inputWrapper">
+    <label for="name" class="formRow--input-wrapper js-inputWrapper">
       <input
         type="text"
         class="formRow--input js-input"
-        name="user"
         placeholder="Usuario"
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="user.name"
+        required
       />
     </label>
-
+    <span *ngIf="name.touched && !name.valid">Ingrese un usuario</span>
     <!--PASSWORD-->
     <label for="password" class="formRow--input-wrapper js-inputWrapper">
       <input
@@ -19,6 +24,17 @@
         placeholder="Contraseña"
       />
     </label>
-    <input type="submit" value="Iniciar sesion" id="btn" />
+    <input
+      type="submit"
+      value="Iniciar sesion"
+      id="btn"
+      [disabled]="!formTarjetas.form.valid"
+    />
   </form>
+  <div id="grupo">
+    <ul>
+      <li id="Forgot-pass"><a href="#">Olvide mi contraseña</a></li>
+      <li>¿No tenes cuenta? <a id="Register" href="#">Hacela acá</a></li>
+    </ul>
+  </div>
 </div>

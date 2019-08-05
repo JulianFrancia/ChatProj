@@ -1,15 +1,29 @@
 import { Component, OnInit } from "@angular/core";
 import { User } from "../../models/user.model";
+import { UserService } from "../../services/user.service";
+import { Global } from "../../services/global";
 declare var jQuery: any;
 declare var $: any;
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  selector: "app-register",
+  templateUrl: "./register.component.html",
+  styleUrls: ["./register.component.css"],
+  providers: [UserService]
 })
-export class LoginComponent implements OnInit {
-  constructor() {}
+export class RegisterComponent implements OnInit {
+  private name: string;
+  private password: string;
+  private nick: string;
+  //private imageURL: string;
+  private creationDate: string;
+  private user: User;
+  public createUser;
+  public status: string;
+
+  constructor(private _userService: UserService) {
+    this.user = new User("", "", "", "");
+  }
 
   ngOnInit() {
     var $inputItem = $(".js-inputWrapper");
@@ -37,5 +51,18 @@ export class LoginComponent implements OnInit {
       });
   }
 
-  onSubmit() {}
+  onSubmit(form) {
+    this._userService.createUser(this.user).subscribe(
+      response => {
+        if (response.user) {
+          this.status = "succes";
+        } else {
+          this.status = "failed";
+        }
+      },
+      error => {
+        console.log(<any>error);
+      }
+    );
+  }
 }

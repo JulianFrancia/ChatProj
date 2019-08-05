@@ -1,0 +1,53 @@
+<div class="main-container">
+  <form
+    #registerForm="ngForm"
+    (ngSubmit)="onSubmit(registerForm)"
+    class="login-form"
+  >
+    <!--TITTLE DEL LOGIN-->
+    <h1 id="login-tittle">Registro</h1>
+    <!--USER-->
+    <label for="name" class="formRow--input-wrapper js-inputWrapper">
+      <input
+        type="text"
+        class="formRow--input js-input"
+        placeholder="Nuevo usuario"
+        name="name"
+        #name="ngModel"
+        [(ngModel)]="user.name"
+        required
+      />
+    </label>
+    <!--PASSWORD-->
+    <label for="password" class="formRow--input-wrapper js-inputWrapper">
+      <input
+        type="text"
+        class="formRow--input js-input"
+        name="password"
+        placeholder="Contraseña"
+      />
+    </label>
+    <!--PASSWORD-->
+    <label
+      for="password-confirm"
+      class="formRow--input-wrapper js-inputWrapper"
+    >
+      <input
+        type="text"
+        class="formRow--input js-input"
+        name="password-confirm"
+        placeholder="Confirmar contraseña"
+      />
+    </label>
+    <!--NICK-->
+    <label for="nick" class="formRow--input-wrapper js-inputWrapper">
+      <input
+        type="text"
+        class="formRow--input js-input"
+        placeholder="Nuevo nick"
+        name="nick"
+      />
+    </label>
+    <input type="submit" value="Registrarse" id="btn" [disabled]="" />
+  </form>
+</div>
