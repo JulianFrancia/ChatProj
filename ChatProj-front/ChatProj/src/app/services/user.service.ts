@@ -15,7 +15,7 @@ export class UserService {
     let params = JSON.stringify(user);
     let headers = new HttpHeaders().set("Content-type", "application/json");
 
-    return this._http.post(this.url + "/create", params, {
+    return this._http.post(this.url + "user/create", params, {
       headers: headers
     });
   }
