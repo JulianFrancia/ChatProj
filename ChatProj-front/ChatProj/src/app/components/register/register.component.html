@@ -25,6 +25,8 @@
         class="formRow--input js-input"
         name="password"
         placeholder="Contraseña"
+        #password="ngModel"
+        [(ngModel)]="user.password"
       />
     </label>
     <!--PASSWORD-->
@@ -46,6 +48,8 @@
         class="formRow--input js-input"
         placeholder="Nuevo nick"
         name="nick"
+        #nick="ngModel"
+        [(ngModel)]="user.nick"
       />
     </label>
     <input type="submit" value="Registrarse" id="btn" [disabled]="" />
