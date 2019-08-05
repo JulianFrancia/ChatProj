@@ -5,7 +5,6 @@ import {
   ArgumentsHost,
   Logger,
 } from '@nestjs/common';
-import { stat } from 'fs';
 
 @Catch()
 export class HttpErrorFilter implements ExceptionFilter {
