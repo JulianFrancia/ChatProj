@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { User } from "../../models/user.model";
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/user.model';
 declare var jQuery: any;
 declare var $: any;
 
@@ -9,33 +9,34 @@ declare var $: any;
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  constructor() {}
+  constructor() { }
 
   ngOnInit() {
-    var $inputItem = $(".js-inputWrapper");
+    const $inputItem = $('.js-inputWrapper');
+    // tslint:disable-next-line: no-unused-expression
     $inputItem.length &&
-      $inputItem.each(function() {
-        var $this = $(this),
-          $input = $this.find(".formRow--input"),
-          placeholderTxt = $input.attr("placeholder"),
-          $placeholder;
-        $input.after('<span class="placeholder">' + placeholderTxt + "</span>"),
-          $input.attr("placeholder", ""),
-          ($placeholder = $this.find(".placeholder")),
+      $inputItem.each(function () {
+        const $this = $(this);
+        const $input = $this.find('.formRow--input');
+        const placeholderTxt = $input.attr('placeholder');
+        let $placeholder;
+        $input.after('<span class="placeholder">' + placeholderTxt + '</span>'),
+          $input.attr('placeholder', ''),
+          ($placeholder = $this.find('.placeholder')),
           $input.val().length
-            ? $this.addClass("active")
-            : $this.removeClass("active"),
+            ? $this.addClass('active')
+            : $this.removeClass('active'),
           $input
-            .on("focusout", function() {
+            .on('focusout', () => {
               $input.val().length
-                ? $this.addClass("active")
-                : $this.removeClass("active");
+                ? $this.addClass('active')
+                : $this.removeClass('active');
             })
-            .on("focus", function() {
-              $this.addClass("active");
+            .on('focus', () => {
+              $this.addClass('active');
             });
       });
   }
 
-  onSubmit() {}
+  onSubmit() { }
 }

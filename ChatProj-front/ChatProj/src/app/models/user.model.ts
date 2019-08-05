@@ -3,7 +3,6 @@ export class User {
     private name: string,
     private password: string,
     private nick: string,
-    //private imageURL: string,
-    private creationDate: string
-  ) {}
+    private imageURL: Date // private creationDate: string
+  ) { }
 }

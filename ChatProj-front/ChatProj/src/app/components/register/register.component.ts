@@ -1,52 +1,54 @@
-import { Component, OnInit } from "@angular/core";
-import { User } from "../../models/user.model";
-import { UserService } from "../../services/user.service";
-import { Global } from "../../services/global";
+import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
+import { Global } from '../../services/global';
 declare var jQuery: any;
 declare var $: any;
 
 @Component({
-  selector: "app-register",
-  templateUrl: "./register.component.html",
-  styleUrls: ["./register.component.css"],
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css'],
   providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
   private name: string;
   private password: string;
   private nick: string;
-  //private imageURL: string;
-  private creationDate: string;
+  // private imageURL: string;
+  private creationDate?: Date;
   private user: User;
   public createUser;
   public status: string;
 
+  // tslint:disable-next-line: variable-name
   constructor(private _userService: UserService) {
-    this.user = new User("", "", "", "");
+    this.user = new User('', '', '', null);
   }
 
   ngOnInit() {
-    var $inputItem = $(".js-inputWrapper");
+    const $inputItem = $('.js-inputWrapper');
+    // tslint:disable-next-line: no-unused-expression
     $inputItem.length &&
-      $inputItem.each(function() {
-        var $this = $(this),
-          $input = $this.find(".formRow--input"),
-          placeholderTxt = $input.attr("placeholder"),
-          $placeholder;
-        $input.after('<span class="placeholder">' + placeholderTxt + "</span>"),
-          $input.attr("placeholder", ""),
-          ($placeholder = $this.find(".placeholder")),
+      $inputItem.each(function () {
+        const $this = $(this);
+        const $input = $this.find('.formRow--input');
+        const placeholderTxt = $input.attr('placeholder');
+        let $placeholder;
+        $input.after('<span class="placeholder">' + placeholderTxt + '</span>'),
+          $input.attr('placeholder', ''),
+          ($placeholder = $this.find('.placeholder')),
           $input.val().length
-            ? $this.addClass("active")
-            : $this.removeClass("active"),
+            ? $this.addClass('active')
+            : $this.removeClass('active'),
           $input
-            .on("focusout", function() {
+            .on('focusout', () => {
               $input.val().length
-                ? $this.addClass("active")
-                : $this.removeClass("active");
+                ? $this.addClass('active')
+                : $this.removeClass('active');
             })
-            .on("focus", function() {
-              $this.addClass("active");
+            .on('focus', () => {
+              $this.addClass('active');
             });
       });
   }
@@ -55,13 +57,13 @@ export class RegisterComponent implements OnInit {
     this._userService.createUser(this.user).subscribe(
       response => {
         if (response.user) {
-          this.status = "succes";
+          this.status = 'succes';
         } else {
-          this.status = "failed";
+          this.status = 'failed';
         }
       },
       error => {
-        console.log(<any>error);
+        console.log(error as any);
       }
     );
   }
