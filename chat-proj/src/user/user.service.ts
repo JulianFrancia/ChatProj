@@ -1,4 +1,4 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, BadRequestException } from '@nestjs/common';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -20,10 +20,7 @@ export class UserService {
             const user = await this.userModel.findById(userId);
             return user;
         } catch (error) {
-            throw new HttpException({
-                status: HttpStatus.BAD_REQUEST,
-                error: 'wrong id format',
-            }, 400);
+            throw new BadRequestException('wrong id format', error);
         }
     }
 
@@ -37,10 +34,7 @@ export class UserService {
             const deletedUser = await this.userModel.findByIdAndDelete(userId);
             return deletedUser;
         } catch (error) {
-            throw new HttpException({
-                status: HttpStatus.BAD_REQUEST,
-                error: 'wrong id format',
-            }, 400);
+            throw new BadRequestException('wrong id format', error);
         }
     }
 
@@ -49,10 +43,7 @@ export class UserService {
             const updatedUser = await this.userModel.findByIdAndUpdate(userId, createUserDto, {new: true});
             return updatedUser;
         } catch (error) {
-            throw new HttpException({
-                status: HttpStatus.BAD_REQUEST,
-                error: 'wrong id format',
-            }, 400);
+            throw new BadRequestException('wrong id format', error);
         }
     }
 }
