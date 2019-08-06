@@ -1,13 +1,12 @@
-import { Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, Query, NotFoundException} from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Res, HttpStatus, Body, Param, Query, NotFoundException } from '@nestjs/common';
 import { CreateUserDTO } from './dto/user.dto';
 import { UserService } from './user.service';
 import { async } from 'rxjs/internal/scheduler/async';
-import { userInfo } from 'os';
 
 @Controller('user')
 export class UserController {
 
-    constructor(private userService: UserService) {}
+    constructor(private userService: UserService) { }
 
     @Post('/create')
     async createUser(@Res() res, @Body() createUserDTO: CreateUserDTO) {
