@@ -10,7 +10,14 @@ declare var $: any;
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor() { }
+  public name: string;
+  public password: string;
+  public user: User;
+
+
+  constructor() {
+    this.user = new User('', '', '')
+  }
 
   ngOnInit() {
     const $inputItem = $('.js-inputWrapper');

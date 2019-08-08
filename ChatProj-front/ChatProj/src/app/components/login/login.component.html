@@ -7,12 +7,12 @@
       <input type="text" class="formRow--input js-input" placeholder="Usuario" name="name" #name="ngModel"
         [(ngModel)]="user.name" required />
     </label>
-    <span *ngIf="name.touched && !name.valid">Ingrese un usuario</span>
+    <span *ngIf="name.touched && !name.valid" style="color:white">Ingrese un usuario</span>
     <!--PASSWORD-->
     <label for="password" class="formRow--input-wrapper js-inputWrapper">
       <input type="password" class="formRow--input js-input" name="password" placeholder="Contraseña" />
     </label>
-    <input type="submit" value="Iniciar sesion" id="btn" [disabled]="!formTarjetas.form.valid" />
+    <input type="submit" value="Iniciar sesion" id="btn" [disabled]="" />
   </form>
   <div id="grupo">
     <ul>

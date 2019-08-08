@@ -16,14 +16,13 @@ export class RegisterComponent implements OnInit {
   public password: string;
   public nick: string;
   // private imageURL: string;
-  public creationDate?: Date;
   public user: User;
   public createUser;
   public status: string;
 
   // tslint:disable-next-line: variable-name
   constructor(private _userService: UserService) {
-    this.user = new User('', '', '', null);
+    this.user = new User('', '', '');
   }
 
   ngOnInit() {
@@ -59,11 +58,9 @@ export class RegisterComponent implements OnInit {
 
   onSubmit(form) {
     if ($('#confirmpass').val() !== $('#password').val()) {
-      $('#not_coincidence').append('*Las contraseñas no coinciden')
-      console.log('No coinciden')
+      $('#not_coincidence').html('*Las contraseñas no coinciden, intentelo de nuevo');
     } else {
-      $('#not_coincidence').remove()
-      console.log('Si coinciden')
+      $('#not_coincidence').remove();
       this._userService.createUser(this.user).subscribe(
         response => {
           if (response.user) {
@@ -76,6 +73,7 @@ export class RegisterComponent implements OnInit {
           console.log(error as any);
         }
       );
+      form.reset();
     }
   }
 

@@ -9,13 +9,13 @@
       <input type="text" class="formRow--input js-input" placeholder="Nuevo usuario" name="name" #name="ngModel"
         [(ngModel)]="user.name" required />
     </label>
-    <span *ngIf="name.touched && !name.valid" style="color:white">Debe ingresar un nombre</span>
+    <span *ngIf="name.touched && !name.valid" style="color:white">*Debe ingresar un nombre*</span>
     <!--PASSWORD-->
     <label for="password" class="formRow--input-wrapper js-inputWrapper">
       <input id="password" type="password" class="formRow--input js-input" name="password" placeholder="Contraseña"
         #password="ngModel" [(ngModel)]="user.password" required />
       <span *ngIf="password.touched && !passLength()" style="color:white;">*La contraseña debe tener al menos 6
-        caracteres</span>
+        caracteres*</span>
     </label>
     <!--PASSWORD CONFIRM-->
     <label for="password-confirm" class="formRow--input-wrapper js-inputWrapper">
