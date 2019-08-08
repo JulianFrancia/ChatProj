@@ -21,7 +21,7 @@ body {
   text-decoration: none;
 }
 
-/*LOGIN*/
+/*LOGIN Y REGISTER*/
 .main-container {
   margin-top: 20%;
   position: relative;
@@ -127,6 +127,11 @@ body {
   user-select: none;
 }
 
+#register-tittle-container {
+  margin-top: 60%;
+  color: white;
+}
+
 #btn {
   width: 100%;
   padding: 3%;
@@ -137,7 +142,7 @@ body {
   box-shadow: 4px 5px 5px black;
   border-radius: 10px;
   font-family: "Roboto";
-  transition: 0.1s;
+  transition: 0.5s;
 }
 
 #btn:hover {
@@ -177,4 +182,13 @@ body {
 
 #Register {
   color: white;
+}
+
+form input[disabled] {
+  background: #ccc !important;
+  cursor: not-allowed;
+}
+
+form input[disabled]:hover {
+  background: #ccc;
 }

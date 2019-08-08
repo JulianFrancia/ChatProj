@@ -12,12 +12,12 @@ declare var $: any;
   providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
-  private name: string;
-  private password: string;
-  private nick: string;
+  public name: string;
+  public password: string;
+  public nick: string;
   // private imageURL: string;
-  private creationDate?: Date;
-  private user: User;
+  public creationDate?: Date;
+  public user: User;
   public createUser;
   public status: string;
 
@@ -27,6 +27,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    // EFECTO PARA QUE EL PLACEHOLDER SUBA
     const $inputItem = $('.js-inputWrapper');
     // tslint:disable-next-line: no-unused-expression
     $inputItem.length &&
@@ -51,20 +52,37 @@ export class RegisterComponent implements OnInit {
               $this.addClass('active');
             });
       });
+    $('body').bind('cut copy paste', (event) => {
+      event.preventDefault();
+    })
   }
 
   onSubmit(form) {
-    this._userService.createUser(this.user).subscribe(
-      response => {
-        if (response.user) {
-          this.status = 'succes';
-        } else {
-          this.status = 'failed';
+    if ($('#confirmpass').val() !== $('#password').val()) {
+      $('#not_coincidence').append('*Las contraseñas no coinciden')
+      console.log('No coinciden')
+    } else {
+      $('#not_coincidence').remove()
+      console.log('Si coinciden')
+      this._userService.createUser(this.user).subscribe(
+        response => {
+          if (response.user) {
+            this.status = 'succes';
+          } else {
+            this.status = 'failed';
+          }
+        },
+        error => {
+          console.log(error as any);
         }
-      },
-      error => {
-        console.log(error as any);
-      }
-    );
+      );
+    }
   }
+
+  passLength() {
+    if (this.user.password.length >= 6) {
+      return true
+    }
+  }
+
 }

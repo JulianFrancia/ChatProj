@@ -1,28 +1,34 @@
 <div class="main-container">
   <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="login-form">
-    <!--TITTLE DEL LOGIN-->
-    <div id="login-tittle-container">
-      <h1 id="login-tittle">Registro</h1>
+    <!--TITTLE DEL REGISTRO-->
+    <div id="register-tittle-container">
+      <h1>Registro</h1>
     </div>
     <!--USER-->
     <label for="name" class="formRow--input-wrapper js-inputWrapper">
       <input type="text" class="formRow--input js-input" placeholder="Nuevo usuario" name="name" #name="ngModel"
         [(ngModel)]="user.name" required />
     </label>
+    <span *ngIf="name.touched && !name.valid" style="color:white">Debe ingresar un nombre</span>
     <!--PASSWORD-->
     <label for="password" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" name="password" placeholder="Contraseña" #password="ngModel"
-        [(ngModel)]="user.password" />
+      <input id="password" type="password" class="formRow--input js-input" name="password" placeholder="Contraseña"
+        #password="ngModel" [(ngModel)]="user.password" required />
+      <span *ngIf="password.touched && !passLength()" style="color:white;">*La contraseña debe tener al menos 6
+        caracteres</span>
     </label>
-    <!--PASSWORD-->
+    <!--PASSWORD CONFIRM-->
     <label for="password-confirm" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" name="password-confirm" placeholder="Confirmar contraseña" />
+      <input id="confirmpass" type="password" class="formRow--input js-input" name="password-confirm"
+        placeholder="Confirmar contraseña" #confirmPass="ngModel" [(ngModel)]="user.confirmPass" required />
+      <span id="not_coincidence" style="color:white"></span>
     </label>
     <!--NICK-->
     <label for="nick" class="formRow--input-wrapper js-inputWrapper">
       <input type="text" class="formRow--input js-input" placeholder="Nuevo nick" name="nick" #nick="ngModel"
-        [(ngModel)]="user.nick" />
+        [(ngModel)]="user.nick" required />
+      <span *ngIf="nick.touched && !nick.valid" style="color:white">Debe ingresar un nick</span>
     </label>
-    <input type="submit" value="Registrarse" id="btn" [disabled]="" />
+    <input type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid" />
   </form>
 </div>

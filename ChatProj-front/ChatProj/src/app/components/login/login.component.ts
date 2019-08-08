@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { Global } from '../../services/global';
 import { User } from '../../models/user.model';
 declare var jQuery: any;
 declare var $: any;
 
 @Component({
-  selector: "app-login",
-  templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.css"]
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
   constructor() { }

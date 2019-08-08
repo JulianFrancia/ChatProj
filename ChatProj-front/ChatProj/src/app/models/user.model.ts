@@ -1,8 +1,9 @@
 export class User {
   constructor(
-    private name: string,
-    private password: string,
-    private nick: string,
-    private imageURL: Date // private creationDate: string
+    public name: string,
+    public password: string,
+    public nick: string,
+    public creationDate: Date
+    //public imageURL: string
   ) { }
 }
