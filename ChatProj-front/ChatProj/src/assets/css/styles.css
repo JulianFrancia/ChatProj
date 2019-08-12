@@ -194,3 +194,9 @@ form input[disabled]:hover {
 }
 
 /*FIN DE LOGIN Y REGISTER*/
+
+/*Mi perfil*/
+
+.loader {
+  background:red;
+}

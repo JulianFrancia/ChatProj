@@ -29,6 +29,8 @@
         [(ngModel)]="user.nick" required />
       <span *ngIf="nick.touched && !nick.valid" style="color:white">Debe ingresar un nick</span>
     </label>
-    <input type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid" />
+    <input type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid"
+      [routerLink]='["/My-profile"]' />
   </form>
 </div>
+<ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="pacman"></ngx-spinner>

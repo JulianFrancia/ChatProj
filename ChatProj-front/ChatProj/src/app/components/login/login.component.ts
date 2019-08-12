@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Global } from '../../services/global';
 import { User } from '../../models/user.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var jQuery: any;
 declare var $: any;
 
@@ -15,11 +16,19 @@ export class LoginComponent implements OnInit {
   public user: User;
 
 
-  constructor() {
-    this.user = new User('', '', '')
+  constructor(private spinner: NgxSpinnerService) {
+    this.user = new User('', '', '');
   }
 
   ngOnInit() {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
+    // ESTO ES PARA QUE LOS PLACEHOLDERS SUBAN AL BOX
     const $inputItem = $('.js-inputWrapper');
     // tslint:disable-next-line: no-unused-expression
     $inputItem.length &&
