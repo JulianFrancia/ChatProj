@@ -28,6 +28,7 @@ export class ValidationPipe implements PipeTransform<any> {
     return value;
   }
 
+  // tslint:disable: ban-types
   private toValidate(metatype: Function): boolean {
     const types: Function[] = [String, Boolean, Number, Array, Object];
     return !types.includes(metatype);

@@ -15,7 +15,7 @@ import {
 import { CreateUserDTO } from './dto/user.dto';
 import { UserService } from './user.service';
 import { async } from 'rxjs/internal/scheduler/async';
-import { ValidationPipe } from '../shared/validation.pipe';
+import { ValidationPipe } from '../shared/pipes/validation.pipe';
 
 @Controller('user')
 export class UserController {
