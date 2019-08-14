@@ -20,7 +20,7 @@
     <!--PASSWORD CONFIRM-->
     <label for="password-confirm" class="formRow--input-wrapper js-inputWrapper">
       <input id="confirmpass" type="password" class="formRow--input js-input" name="password-confirm"
-        placeholder="Confirmar contraseña" #confirmPass="ngModel" [(ngModel)]="user.confirmPass" required />
+        placeholder="Confirmar contraseña" required />
       <span id="not_coincidence" style="color:white"></span>
     </label>
     <!--NICK-->
@@ -29,8 +29,10 @@
         [(ngModel)]="user.nick" required />
       <span *ngIf="nick.touched && !nick.valid" style="color:white">Debe ingresar un nick</span>
     </label>
-    <input type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid"
-      [routerLink]='["/My-profile"]' />
+    <input type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid" />
   </form>
+  <div id="button-myProfile" style="display:none">
+    <a id="btn" [routerLink]='["/My-profile"]'>Ir a mi perfil</a>
+  </div>
 </div>
-<ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="pacman"></ngx-spinner>
+<!-- <ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="pacman"></ngx-spinner> -->

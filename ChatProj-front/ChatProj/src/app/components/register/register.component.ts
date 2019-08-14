@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { Global } from '../../services/global';
-import { NgxSpinnerService } from 'ngx-spinner'
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var jQuery: any;
 declare var $: any;
 
@@ -70,6 +70,10 @@ export class RegisterComponent implements OnInit {
         '*Las contraseñas no coinciden, intentelo de nuevo'
       );
     } else {
+      $('form').fadeOut('slow');
+      if ($('form').css('display', 'none')) {
+        $('#button-myProfile').fadeIn('slow');
+      }
       $('#not_coincidence').remove();
       this._userService.createUser(this.user).subscribe(
         response => {

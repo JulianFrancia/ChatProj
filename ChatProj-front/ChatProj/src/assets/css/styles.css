@@ -143,6 +143,7 @@ body {
   border-radius: 10px;
   font-family: "Roboto";
   transition: 0.5s;
+  color:black;
 }
 
 #btn:hover {
@@ -192,6 +193,12 @@ form input[disabled] {
 form input[disabled]:hover {
   background: #ccc;
 }
+
+#button-myProfile{
+  width: 100%;
+}
+
+
 
 /*FIN DE LOGIN Y REGISTER*/
 
