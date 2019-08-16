@@ -7,12 +7,7 @@ import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { HttpErrorFilter } from './shared/filters/http-error.filter';
 import { LoggingInterceptor } from './shared/interceptors/logging.interceptor';
 import { ValidationPipe } from './shared/pipes/validation.pipe';
-import {
-  SharedModule,
-  //ValidationPipe,
-  //HttpErrorFilter,
-  //LoggingInterceptor,
-} from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { ConfigurationService } from './shared/configuration/configuration.service';
 import { Configuration } from './shared/configuration/configuration.enum';
 
@@ -46,12 +41,12 @@ export class AppModule {
   static port: string | number;
   static isDev: boolean;
 
-  constructor(private readonly _configurationService: ConfigurationService) {
+  constructor(private readonly configurationService: ConfigurationService) {
     AppModule.port = AppModule.normalizePort(
-      _configurationService.get(Configuration.PORT),
+      configurationService.get(Configuration.PORT),
     );
-    AppModule.host = _configurationService.get(Configuration.HOST);
-    AppModule.isDev = _configurationService.isDevelopment;
+    AppModule.host = configurationService.get(Configuration.HOST);
+    AppModule.isDev = configurationService.isDevelopment;
   }
 
   private static normalizePort(param: number | string): number | string {
