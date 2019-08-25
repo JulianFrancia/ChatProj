@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import { Global } from '../../services/global';
 import { NgxSpinnerService } from 'ngx-spinner';
 declare var jQuery: any;
 declare var $: any;
@@ -23,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
   constructor(private _userService: UserService, private spinner: NgxSpinnerService) {
-    this.user = new User('', '', '');
+    this.user = new User('', '', '', '');
   }
 
   ngOnInit() {

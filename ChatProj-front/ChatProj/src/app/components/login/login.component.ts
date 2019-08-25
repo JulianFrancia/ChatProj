@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
 
   constructor(private spinner: NgxSpinnerService) {
-    this.user = new User('', '', '');
+    this.user = new User('', '', '', '');
   }
 
   ngOnInit() {
