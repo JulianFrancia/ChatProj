@@ -22,7 +22,7 @@ export class UserController {
   constructor(private userService: UserService) { }
 
   @Post('/create')
-  // @UsePipes(ValidationPipe)
+  @UsePipes(ValidationPipe)
   async createUser(@Res() res, @Body() createUserDTO: CreateUserDTO) {
     const user = await this.userService.createUser(createUserDTO);
     return res.status(HttpStatus.OK).json({
@@ -69,7 +69,7 @@ export class UserController {
   }
 
   @Put('/update')
-  // @UsePipes(ValidationPipe)
+  @UsePipes(ValidationPipe)
   async updateUser(
     @Res() res,
     @Body() createUserDTO: CreateUserDTO,

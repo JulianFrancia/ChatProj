@@ -1,4 +1,4 @@
-import { IsString, IsDate } from 'class-validator';
+import { IsString, IsDate, IsOptional } from 'class-validator';
 
 export class CreateUserDTO {
   @IsString()
@@ -10,9 +10,11 @@ export class CreateUserDTO {
   @IsString()
   readonly nick: string;
 
+  @IsOptional()
   @IsString()
   readonly imageURL: string;
 
+  @IsOptional()
   @IsDate()
   readonly creationDate: Date;
 }

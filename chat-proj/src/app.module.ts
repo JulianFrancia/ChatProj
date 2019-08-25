@@ -16,6 +16,7 @@ import { Configuration } from './shared/configuration/configuration.enum';
     UserModule,
     MongooseModule.forRoot('mongodb://localhost/chatProj', {
       useNewUrlParser: true,
+      useFindAndModify: false,
     }),
     SharedModule,
   ],
@@ -30,10 +31,10 @@ import { Configuration } from './shared/configuration/configuration.enum';
       provide: APP_INTERCEPTOR,
       useClass: LoggingInterceptor,
     },
-    // {
-    //   provide: APP_PIPE,
-    //   useClass: ValidationPipe,
-    // },
+    {
+      provide: APP_PIPE,
+      useClass: ValidationPipe,
+    },
   ],
 })
 export class AppModule {
