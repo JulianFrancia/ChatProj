@@ -15,7 +15,7 @@ import { Configuration } from './shared/configuration/configuration.enum';
   imports: [
     UserModule,
     MongooseModule.forRoot('mongodb://localhost/chatProj', {
-      useNewUrlParse: true,
+      useNewUrlParser: true,
     }),
     SharedModule,
   ],
