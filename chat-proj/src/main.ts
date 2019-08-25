@@ -12,7 +12,7 @@ async function bootstrap() {
     .setVersion('1.0.0')
     .setHost(hostDomain.split('//')[1])
     .setSchemes(AppModule.isDev ? 'http' : 'https')
-    .setBasePath('/api')
+    // .setBasePath('/api')
     .addBearerAuth('Authorization', 'header')
     .build();
 
@@ -31,6 +31,8 @@ async function bootstrap() {
       showRequestDuration: true,
     },
   });
+
+  // app.setGlobalPrefix('api');
 
   app.enableCors();
   await app.listen(AppModule.port);

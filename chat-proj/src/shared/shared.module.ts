@@ -4,6 +4,7 @@ import { MapperService } from './mapper/mapper.service';
 import { HttpErrorFilter } from './filters/http-error.filter';
 import { ValidationPipe } from './pipes/validation.pipe';
 import { LoggingInterceptor } from './interceptors/logging.interceptor';
+import { BaseService } from './base.service';
 
 @Global()
 @Module({
@@ -22,4 +23,4 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
     LoggingInterceptor,
   ],
 })
-export class SharedModule {}
+export class SharedModule { }
