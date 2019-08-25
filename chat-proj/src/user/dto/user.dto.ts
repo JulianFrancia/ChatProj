@@ -1,7 +1,18 @@
+import { IsString, IsDate } from 'class-validator';
+
 export class CreateUserDTO {
-    readonly name: string;
-    readonly password: string;
-    readonly nick: string;
-    readonly imageURL: string;
-    readonly creationDate: Date;
+  @IsString()
+  readonly name: string;
+
+  @IsString()
+  readonly password: string;
+
+  @IsString()
+  readonly nick: string;
+
+  @IsString()
+  readonly imageURL: string;
+
+  @IsDate()
+  readonly creationDate: Date;
 }

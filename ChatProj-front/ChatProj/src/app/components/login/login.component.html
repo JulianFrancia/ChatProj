@@ -4,37 +4,22 @@
     <h1 id="login-tittle">Login</h1>
     <!--USER-->
     <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input
-        type="text"
-        class="formRow--input js-input"
-        placeholder="Usuario"
-        name="name"
-        #name="ngModel"
-        [(ngModel)]="user.name"
-        required
-      />
+      <input type="text" class="formRow--input js-input" placeholder="Usuario" name="name" #name="ngModel"
+        [(ngModel)]="user.name" required />
     </label>
-    <span *ngIf="name.touched && !name.valid">Ingrese un usuario</span>
+    <span *ngIf="name.touched && !name.valid" style="color:white">Ingrese un usuario</span>
     <!--PASSWORD-->
     <label for="password" class="formRow--input-wrapper js-inputWrapper">
-      <input
-        type="password"
-        class="formRow--input js-input"
-        name="password"
-        placeholder="Contraseña"
-      />
+      <input type="password" class="formRow--input js-input" name="password" placeholder="Contraseña" />
     </label>
-    <input
-      type="submit"
-      value="Iniciar sesion"
-      id="btn"
-      [disabled]="!formTarjetas.form.valid"
-    />
+    <input type="submit" value="Iniciar sesion" id="btn" [disabled]="" />
   </form>
   <div id="grupo">
     <ul>
       <li id="Forgot-pass"><a href="#">Olvide mi contraseña</a></li>
-      <li>¿No tenes cuenta? <a id="Register" href="#">Hacela acá</a></li>
+      <li>¿No tenes cuenta? <a id="Register" [routerLink]='["register"]'>Hacela
+          acá</a></li>
     </ul>
   </div>
 </div>
+<ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="pacman"></ngx-spinner>

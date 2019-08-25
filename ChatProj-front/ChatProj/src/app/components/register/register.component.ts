@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { Global } from '../../services/global';
+import { NgxSpinnerService } from 'ngx-spinner';
 declare var jQuery: any;
 declare var $: any;
 
@@ -12,21 +13,28 @@ declare var $: any;
   providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
-  private name: string;
-  private password: string;
-  private nick: string;
+  public name: string;
+  public password: string;
+  public nick: string;
   // private imageURL: string;
-  private creationDate?: Date;
-  private user: User;
+  public user: User;
   public createUser;
   public status: string;
 
   // tslint:disable-next-line: variable-name
-  constructor(private _userService: UserService) {
-    this.user = new User('', '', '', null);
+  constructor(private _userService: UserService, private spinner: NgxSpinnerService) {
+    this.user = new User('', '', '');
   }
 
   ngOnInit() {
+    /** spinner starts on init */
+    this.spinner.show();
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
+    // EFECTO PARA QUE EL PLACEHOLDER SUBA
     const $inputItem = $('.js-inputWrapper');
     // tslint:disable-next-line: no-unused-expression
     $inputItem.length &&
@@ -51,20 +59,41 @@ export class RegisterComponent implements OnInit {
               $this.addClass('active');
             });
       });
+    $('body').bind('cut copy paste', event => {
+      event.preventDefault();
+    });
   }
 
   onSubmit(form) {
-    this._userService.createUser(this.user).subscribe(
-      response => {
-        if (response.user) {
-          this.status = 'succes';
-        } else {
-          this.status = 'failed';
-        }
-      },
-      error => {
-        console.log(error as any);
+    if ($('#confirmpass').val() !== $('#password').val()) {
+      $('#not_coincidence').html(
+        '*Las contraseñas no coinciden, intentelo de nuevo'
+      );
+    } else {
+      $('form').fadeOut('slow');
+      if ($('form').css('display', 'none')) {
+        $('#button-myProfile').fadeIn('slow');
       }
-    );
+      $('#not_coincidence').remove();
+      this._userService.createUser(this.user).subscribe(
+        response => {
+          if (response.user) {
+            this.status = 'succes';
+          } else {
+            this.status = 'failed';
+          }
+        },
+        error => {
+          console.log(error as any);
+        }
+      );
+      form.reset();
+    }
+  }
+
+  passLength() {
+    if (this.user.password.length >= 6) {
+      return true;
+    }
   }
 }

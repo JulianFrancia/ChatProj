@@ -45,7 +45,7 @@ export class UserService {
 
   async updateUser(
     userId: string,
-    createUserDto: CreateUserDTO,
+    createUserDto: Partial<CreateUserDTO>,
   ): Promise<User> {
     try {
       const updatedUser = await this.userModel.findByIdAndUpdate(
