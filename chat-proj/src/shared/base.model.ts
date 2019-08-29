@@ -1,4 +1,4 @@
-import { Document, SchemaOptions } from 'mongoose';
+import { SchemaOptions } from 'mongoose';
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Typegoose, prop } from 'typegoose';
 

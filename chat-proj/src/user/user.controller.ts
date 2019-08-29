@@ -1,94 +1,66 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Put,
-  Delete,
-  Res,
-  HttpStatus,
-  Body,
-  Param,
-  Query,
-  NotFoundException,
-  UsePipes,
-} from '@nestjs/common';
-import { CreateUserDTO } from './dto/user.dto';
+import { Controller, HttpStatus, Post, UsePipes, Res, Body, BadRequestException, InternalServerErrorException } from '@nestjs/common';
 import { UserService } from './user.service';
-import { async } from 'rxjs/internal/scheduler/async';
+import { ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { UserVm } from './models/view-models/user-vm.model';
+import { User } from './models/user.model';
 import { ValidationPipe } from '../shared/pipes/validation.pipe';
+import { RegisterVm } from './models/view-models/register-vm.model';
+import { ApiException } from '../shared/api-exception.model';
+import { GetOperationId } from '../shared/utilities/get-operation-id';
+import { LoginResponseVm } from './models/view-models/login-response-vm.model';
+import { LoginVm } from './models/view-models/login-vm.model';
 
 @Controller('user')
+@ApiUseTags(User.modelName)
 export class UserController {
-  constructor(private userService: UserService) { }
+    constructor(private readonly userService: UserService) { }
 
-  @Post('/create')
-  @UsePipes(ValidationPipe)
-  async createUser(@Res() res, @Body() createUserDTO: CreateUserDTO) {
-    const user = await this.userService.createUser(createUserDTO);
-    return res.status(HttpStatus.OK).json({
-      message: 'user succesfully created',
-      user,
-    });
-  }
+    @Post('register')
+    @UsePipes(ValidationPipe)
+    @ApiResponse({ status: HttpStatus.CREATED, type: UserVm })
+    @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: ApiException })
+    @ApiOperation(GetOperationId(User.modelName, 'Register'))
+    async register(@Body() registerVm: RegisterVm): Promise<UserVm> {
+        const { username, password } = registerVm;
 
-  @Get('/')
-  async getUsers(@Res() res) {
-    const users = await this.userService.getUsers();
-    return res.status(HttpStatus.OK).json({
-      users,
-    });
-  }
+        if (!username) {
+            throw new BadRequestException('Username is required');
+        }
 
-  @Get('/:userId')
-  async getUser(@Res() res, @Param('userId') userId) {
-    try {
-      const user = await this.userService.getUser(userId);
-      if (!user) {
-        throw new NotFoundException('User does not exists');
-      }
-      return res.status(HttpStatus.OK).json(user);
-    } catch (httpException) {
-      throw httpException;
+        if (!password) {
+            throw new BadRequestException('Password is required');
+        }
+
+        let exist;
+        try {
+            exist = await this.userService.findOne({ username });
+        } catch (e) {
+            throw new InternalServerErrorException(e);
+        }
+
+        if (exist) {
+            throw new BadRequestException(`${username} exists`);
+        }
+
+        const newUser = await this.userService.register(registerVm);
+        return this.userService.map<UserVm>(newUser);
     }
-  }
 
-  @Delete('/delete')
-  async deleteUser(@Res() res, @Query('userId') userId) {
-    try {
-      const deletedUser = await this.userService.deleteUser(userId);
-      if (!deletedUser) {
-        throw new NotFoundException('User does not exists');
-      }
-      return res.status(HttpStatus.OK).json({
-        message: 'user deleted succesfully',
-        deletedUser,
-      });
-    } catch (httpException) {
-      throw httpException;
-    }
-  }
+    @Post('login')
+    @UsePipes(ValidationPipe)
+    @ApiResponse({ status: HttpStatus.CREATED, type: LoginResponseVm })
+    @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: ApiException })
+    @ApiOperation(GetOperationId(User.modelName, 'Login'))
+    async login(@Body() loginVm: LoginVm): Promise<LoginResponseVm> {
+        const fields = Object.keys(loginVm);
 
-  @Put('/update')
-  @UsePipes(ValidationPipe)
-  async updateUser(
-    @Res() res,
-    @Body() createUserDTO: CreateUserDTO,
-    @Query('userId') userId,
-  ) {
-    try {
-      const updatedUser = await this.userService.updateUser(
-        userId,
-        createUserDTO,
-      );
-      if (!updatedUser) {
-        throw new NotFoundException('User does not exists');
-      }
-      return res.status(HttpStatus.OK).json({
-        message: 'user updated succesfully',
-        updatedUser,
-      });
-    } catch (httpException) {
-      throw httpException;
+        fields.forEach(field => {
+            if (!field) {
+                throw new BadRequestException(`${field} is required`);
+            }
+        });
+
+        return this.userService.login(loginVm);
     }
-  }
+
 }

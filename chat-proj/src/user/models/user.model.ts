@@ -12,7 +12,7 @@ export class User extends BaseModel {
     @prop({ required: [true, 'nick is required'], minlength: [4, 'Must be at least 4 characters'], unique: true })
     nick: string;
 
-    @prop({ enum: UserRole })
+    @prop({ enum: UserRole, default: UserRole.User })
     role?: UserRole;
 
     @prop()

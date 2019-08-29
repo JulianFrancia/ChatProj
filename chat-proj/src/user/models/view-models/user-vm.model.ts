@@ -1,7 +1,7 @@
 import { BaseModel } from '../../../shared/base.model';
 import { UserRole } from '../user-role.enum';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
-import { EnumToArray } from 'src/shared/utilities/enum-to-array';
+import { EnumToArray } from '../../../shared/utilities/enum-to-array';
 
 export class UserVm extends BaseModel {
     @ApiModelProperty() username: string;

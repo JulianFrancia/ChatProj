@@ -17,6 +17,7 @@ import { Configuration } from './shared/configuration/configuration.enum';
     MongooseModule.forRoot(ConfigurationService.connectionString, {
       useNewUrlParser: true,
       useFindAndModify: false,
+      useCreateIndex: true,
     }),
     SharedModule,
   ],

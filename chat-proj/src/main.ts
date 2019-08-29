@@ -1,6 +1,7 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { HttpErrorFilter } from './shared/filters/http-error.filter';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -33,6 +34,7 @@ async function bootstrap() {
   });
 
   // app.setGlobalPrefix('api');
+  app.useGlobalFilters(new HttpErrorFilter());
 
   app.enableCors();
   await app.listen(AppModule.port);
