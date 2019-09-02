@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
   constructor(private _userService: UserService, private spinner: NgxSpinnerService) {
-    this.user = new User('', '', '', '');
+    this.user = new User('', '', '');
   }
 
   ngOnInit() {

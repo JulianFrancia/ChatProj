@@ -260,8 +260,10 @@ form input[disabled]:hover {
 
 .formRow--input {
   position: relative;
-  padding: 3%;
+  padding: 4%;
   width: 100%;
+  margin-left:0 auto;
+  margin-right: 0 auto;
   outline: none;
   border: solid 3px black;
   border-radius: 10px;
@@ -331,7 +333,7 @@ form input[disabled]:hover {
 }
 
 #register-tittle-container {
-  margin-top: 60%;
+  margin-top: 160%;
   color: white;
 }
 
