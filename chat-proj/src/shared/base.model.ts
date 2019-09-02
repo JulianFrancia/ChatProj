@@ -1,8 +1,12 @@
 import { SchemaOptions } from 'mongoose';
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
-import { Typegoose, prop } from 'typegoose';
+import { Typegoose, prop, pre } from 'typegoose';
 
-export class BaseModel extends Typegoose {
+@pre('findOneAndUpdate', (next) => {
+    this.update.updatedAt = new Date(Date.now());
+    next();
+})
+export class BaseModel<T> extends Typegoose {
     @prop({ default: Date.now() })
     createdAt?: Date;
 
