@@ -4,22 +4,32 @@ import {
   HttpException,
   ArgumentsHost,
   Logger,
+  HttpStatus,
 } from '@nestjs/common';
 
 @Catch()
 export class HttpErrorFilter implements ExceptionFilter {
-  catch(exception: HttpException, host: ArgumentsHost) {
+  catch(error: any, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const request = ctx.getRequest();
     const response = ctx.getResponse();
-    const status = exception.getStatus();
+    const status = error.getStatus();
+
+    if (error.getStatus() === HttpStatus.UNAUTHORIZED) {
+      if (typeof error.response !== 'string') {
+        // tslint:disable-next-line: no-string-literal
+        error.response['message'] = error.response.message || 'You do not have permissions to access this resource';
+      }
+    }
 
     const errorResponse = {
-      code: status,
+      statusCode: status,
+      error: error.response.name || error.name,
+      message: error.response.message || error.message || null,
+      errors: error.response.errors || null,
       timestamp: new Date().toLocaleDateString(),
-      path: request.url,
-      method: request.method,
-      message: exception.message.error || exception.message || null,
+      path: request ? request.url : null,
+      method: request ? request.method : null,
     };
 
     Logger.error(

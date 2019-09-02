@@ -1,11 +1,22 @@
-import { Document, SchemaOptions } from 'mongoose';
+import { SchemaOptions } from 'mongoose';
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
+import { Typegoose, prop, pre } from 'typegoose';
 
-export interface BaseModel extends Document {
+@pre('findOneAndUpdate', (next) => {
+    this.update.updatedAt = new Date(Date.now());
+    next();
+})
+export class BaseModel<T> extends Typegoose {
+    @prop({ default: Date.now() })
     createdAt?: Date;
+
+    @prop({ default: Date.now() })
     updatedAt?: Date;
+
+    id?: string;
 }
 
+// tslint:disable-next-line: max-classes-per-file
 export class BaseModelVM {
 
     @ApiModelPropertyOptional({ type: String, format: 'date-time' })
