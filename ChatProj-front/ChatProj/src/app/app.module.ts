@@ -11,6 +11,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { FeedComponent } from './components/feed/feed.component';
+import { ComponentenuevoComponent } from './src/app/componentenuevo/componentenuevo.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { FeedComponent } from './components/feed/feed.component';
     ErrorComponent,
     RegisterComponent,
     MyProfileComponent,
-    FeedComponent
+    FeedComponent,
+    ComponentenuevoComponent
   ],
   imports: [BrowserModule, routing, HttpClientModule, FormsModule, NgxSpinnerModule],
   providers: [appRoutingProviders],
