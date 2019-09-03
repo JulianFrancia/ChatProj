@@ -12,13 +12,8 @@ declare var $: any;
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {
-  public username: string;
-  public password: string;
-  public user: User;
-
 
   constructor(private _userService: UserService, private spinner: NgxSpinnerService) {
-    // this.user = new User('', '', '');
   }
 
   ngOnInit() {
@@ -57,7 +52,16 @@ export class LoginComponent implements OnInit {
 
   }
 
-  onSubmit() {
-    // this._userService.login(user.username, user.password)
+  onSubmit(username: string, password: string) {
+    this._userService.login(username, password).subscribe(
+      res => {
+        console.log(res);
+        console.log('LOGEADO BB')
+      },
+      error => {
+        console.error(error);
+      }
+    );
   }
+
 }

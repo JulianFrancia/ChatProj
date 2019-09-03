@@ -12,12 +12,7 @@ declare var $: any;
   providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
-  public name: string;
-  public password: string;
-  public nick: string;
-  // private imageURL: string;
   public user: User;
-  public createUser;
   public status: string;
 
   // tslint:disable-next-line: variable-name

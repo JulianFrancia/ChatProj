@@ -25,11 +25,13 @@
     </label>
     <!--FIRSTNAME-->
     <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Firstname" />
+      <input type="text" class="formRow--input js-input" placeholder="Firstname" name="firstname" #firstname="ngModel"
+        [(ngModel)]="user.firstname" />
     </label>
     <!--LASTNAME-->
     <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Lastname" />
+      <input type="text" class="formRow--input js-input" placeholder="Lastname" name="lastname" #lastname="ngModel"
+        [(ngModel)]="user.lastname" />
     </label>
     <!--NICK-->
     <label for="nick" class="formRow--input-wrapper js-inputWrapper">
