@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Global } from '../../services/global';
 import { User } from '../../models/user.model';
+import { UserService } from '../../services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 declare var jQuery: any;
 declare var $: any;
@@ -8,16 +8,17 @@ declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
+  providers: [UserService]
 })
 export class LoginComponent implements OnInit {
-  public name: string;
+  public username: string;
   public password: string;
   public user: User;
 
 
-  constructor(private spinner: NgxSpinnerService) {
-    this.user = new User('', '', '');
+  constructor(private _userService: UserService, private spinner: NgxSpinnerService) {
+    // this.user = new User('', '', '');
   }
 
   ngOnInit() {
@@ -53,7 +54,10 @@ export class LoginComponent implements OnInit {
               $this.addClass('active');
             });
       });
+
   }
 
-  onSubmit() { }
+  onSubmit() {
+    // this._userService.login(user.username, user.password)
+  }
 }

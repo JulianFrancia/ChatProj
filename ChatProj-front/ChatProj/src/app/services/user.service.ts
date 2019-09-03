@@ -12,11 +12,11 @@ export class UserService {
     this.url = environment.serviceUrl;
   }
 
-  createUser(user: User): Observable<any> {
+  RegisterUser(user: User): Observable<any> {
     const params = JSON.stringify(user);
     const headers = new HttpHeaders().set('Content-type', 'application/json');
 
-    return this._http.post(this.url + '/user/create', params, {
+    return this._http.post(this.url + '/user/register', params, {
       headers
     });
   }
@@ -25,4 +25,8 @@ export class UserService {
 
     return this._http.get(this.url + '/user/' + id, { headers: headers });
   };
+
+  login(username: string, password: string): Observable<any> {
+    return this._http.post(this.url + 'user/login', { username: username, password: password })
+  }
 }

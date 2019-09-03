@@ -2,10 +2,10 @@
   <form #loginForm="ngForm" class="login-form" (ngSubmit)="onSubmit()">
     <!--TITTLE DEL LOGIN-->
     <h1 id="login-tittle">Login</h1>
-    <!--USER-->
+    <!--USERNAME-->
     <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Usuario" name="name" #name="ngModel"
-        [(ngModel)]="user.name" required />
+      <input type="text" class="formRow--input js-input" placeholder="Usuario" name="username" #username="ngModel"
+        [(ngModel)]="user.username" required />
     </label>
     <span *ngIf="name.touched && !name.valid" style="color:white">Ingrese un usuario</span>
     <!--PASSWORD-->

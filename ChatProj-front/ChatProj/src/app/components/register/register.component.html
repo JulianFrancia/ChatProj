@@ -4,12 +4,12 @@
     <div id="register-tittle-container">
       <h1>Registro</h1>
     </div>
-    <!--USER-->
+    <!--USERNAME-->
     <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Nuevo usuario" name="name" #name="ngModel"
-        [(ngModel)]="user.name" required />
+      <input type="text" class="formRow--input js-input" placeholder="Nombre de usuario" name="username"
+        #username="ngModel" [(ngModel)]="user.username" required />
     </label>
-    <span *ngIf="name.touched && !name.valid" style="color:white">*Debe ingresar un nombre*</span>
+    <span *ngIf="username.touched && !username.valid" style="color:white">*Debe ingresar un nombre*</span>
     <!--PASSWORD-->
     <label for="password" class="formRow--input-wrapper js-inputWrapper">
       <input id="password" type="password" class="formRow--input js-input" name="password" placeholder="Contraseña"
@@ -23,11 +23,23 @@
         placeholder="Confirmar contraseña" required />
       <span id="not_coincidence" style="color:white"></span>
     </label>
+    <!--FIRSTNAME-->
+    <label for="name" class="formRow--input-wrapper js-inputWrapper">
+      <input type="text" class="formRow--input js-input" placeholder="Firstname" />
+    </label>
+    <!--LASTNAME-->
+    <label for="name" class="formRow--input-wrapper js-inputWrapper">
+      <input type="text" class="formRow--input js-input" placeholder="Lastname" />
+    </label>
     <!--NICK-->
     <label for="nick" class="formRow--input-wrapper js-inputWrapper">
       <input type="text" class="formRow--input js-input" placeholder="Nuevo nick" name="nick" #nick="ngModel"
         [(ngModel)]="user.nick" required />
-      <span *ngIf="nick.touched && !nick.valid" style="color:white">Debe ingresar un nick</span>
+      <span *ngIf="nick.touched && !nick.valid" style="color:white">*Debe ingresar un nick*</span>
+    </label>
+    <!--IMAGE-->
+    <label for="nick" class="formRow--input-wrapper js-inputWrapper">
+      <input type="text" class="formRow--input js-input" placeholder="Prueba para imagen" />
     </label>
     <input type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid" />
   </form>

@@ -23,7 +23,7 @@ body {
 
 /*LOGIN Y REGISTER*/
 .main-container {
-  margin-top: 20%;
+  margin-top: 30%;
   position: relative;
   width: 50%;
   text-align: center;
@@ -226,9 +226,9 @@ form input[disabled]:hover {
 
 /*LOGIN Y REGISTER*/
 .main-container {
-  margin-top: 20%;
+  margin-top: 132%;
   position: relative;
-  width: 50%;
+  width: 89%;
   text-align: center;
   top: 50%;
   left: 50%;
@@ -333,7 +333,6 @@ form input[disabled]:hover {
 }
 
 #register-tittle-container {
-  margin-top: 160%;
   color: white;
 }
 

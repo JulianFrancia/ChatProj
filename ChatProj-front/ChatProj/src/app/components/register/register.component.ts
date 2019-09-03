@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   // tslint:disable-next-line: variable-name
   constructor(private _userService: UserService, private spinner: NgxSpinnerService) {
-    this.user = new User('', '', '');
+    this.user = new User('', '', '', '', '', '');
   }
 
   ngOnInit() {
@@ -74,7 +74,7 @@ export class RegisterComponent implements OnInit {
         $('#button-myProfile').fadeIn('slow');
       }
       $('#not_coincidence').remove();
-      this._userService.createUser(this.user).subscribe(
+      this._userService.RegisterUser(this.user).subscribe(
         response => {
           if (response.user) {
             this.status = 'succes';
