@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
-import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -11,7 +11,6 @@ import { ErrorComponent } from './components/error/error.component';
 import { RegisterComponent } from './components/register/register.component';
 import { MyProfileComponent } from './components/my-profile/my-profile.component';
 import { FeedComponent } from './components/feed/feed.component';
-import { ComponentenuevoComponent } from './src/app/componentenuevo/componentenuevo.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { ComponentenuevoComponent } from './src/app/componentenuevo/componentenu
     ErrorComponent,
     RegisterComponent,
     MyProfileComponent,
-    FeedComponent,
-    ComponentenuevoComponent
+    FeedComponent
   ],
   imports: [BrowserModule, routing, HttpClientModule, FormsModule, NgxSpinnerModule],
   providers: [appRoutingProviders],
