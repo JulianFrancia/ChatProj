@@ -23,7 +23,7 @@ body {
 
 /*LOGIN Y REGISTER*/
 .main-container {
-  margin-top: 60%;
+  margin-top: 34%;
   position: relative;
   width: 50%;
   text-align: center;
@@ -31,6 +31,7 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
 
 .login-form {
   display: block;
