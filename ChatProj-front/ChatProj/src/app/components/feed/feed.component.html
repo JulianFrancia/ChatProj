@@ -1,1 +1,2 @@
-<a id="btn">Ir a mi perfil</a>
+<h1 style="color:white; text-align:center; margin-top: 30%;" *ngIf="userLogged.name != '' ">{{userLogged.name}}</h1>
+<button style="margin-left:15%" (click)="deslog()">Desloguearse</button>

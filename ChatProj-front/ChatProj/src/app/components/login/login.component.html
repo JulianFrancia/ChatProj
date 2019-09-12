@@ -10,7 +10,7 @@
     <label for="password" class="formRow--input-wrapper js-inputWrapper">
       <input type="password" class="formRow--input js-input" name="password" placeholder="Contraseña" #password />
     </label>
-    <input type="submit" value="Iniciar sesion" id="btn" [disabled]="" />
+    <input type="submit" value="Iniciar sesion" id="btn" [disabled]=""/>
   </form>
   <div id="grupo">
     <ul>
@@ -18,5 +18,8 @@
       <li>¿No tenes cuenta? <a id="Register" [routerLink]='["register"]'>Hacela
           acá</a></li>
     </ul>
+  </div>
+  <div *ngIf="stateLogin">
+    <h1>LOGEADO</h1>
   </div>
 </div>

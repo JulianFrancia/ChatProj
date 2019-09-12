@@ -13,6 +13,7 @@ declare var $: any;
 })
 export class RegisterComponent implements OnInit {
   public user: User;
+  public saveUser;
   public status: string;
 
   // tslint:disable-next-line: variable-name

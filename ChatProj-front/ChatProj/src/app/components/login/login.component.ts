@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../../models/user.model';
+import { UserLogged } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 declare var jQuery: any;
 declare var $: any;
@@ -12,8 +13,11 @@ declare var $: any;
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {
+  public userLogged: UserLogged;
+  public stateLogin: boolean
 
-  constructor(private _userService: UserService, private spinner: NgxSpinnerService) {
+  constructor(private _userService: UserService, private router: Router, private spinner: NgxSpinnerService) {
+    this.stateLogin = false
   }
 
   ngOnInit() {
@@ -56,12 +60,19 @@ export class LoginComponent implements OnInit {
     this._userService.login(username, password).subscribe(
       res => {
         console.log(res);
-        console.log('LOGEADO BB')
+        console.log('Logeado');
+        let u: UserLogged = {name: username};        
+        this._userService.setUserLoggedIn(u);
+        this.stateLogin = true;        
       },
       error => {
         console.error(error);
-      }
+      },
+      () => this.navigate()
     );
+  }
+  navigate() {    
+    this.router.navigateByUrl('/feed');
   }
 
 }

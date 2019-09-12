@@ -9,17 +9,6 @@ export class User {
   ) { }
 }
 
-export class Session {
-  public token: string;
-  public user: User;
-}
-
-export class Login {
-  public name: string;
-  public password: string;
-
-  constructor(object: any) {
-    this.name = (object.name) ? object.name : null;
-    this.password = (object.password) ? object.password : null;
-  }
+export class UserLogged{
+  public name:string
 }
