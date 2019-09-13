@@ -43,7 +43,7 @@ export abstract class BaseService<T extends Typegoose> {
         return this.model.findByIdAndDelete(this.toObjectId(id)).exec();
     }
 
-    async update(id: string, item: InstanceType<T>): Promise<InstanceType<T>> {
+    async update(id: string, item: Partial<InstanceType<T>>): Promise<InstanceType<T>> {
         return this.model.findByIdAndUpdate(this.toObjectId(id), item, { new: true }).exec();
     }
 

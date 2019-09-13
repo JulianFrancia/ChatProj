@@ -22,7 +22,7 @@ export class User extends BaseModel<User> {
     lastName?: string;
 
     @prop()
-    imageUrl?: string;
+    avatarUrl?: string;
 
     @prop()
     get fullName(): string {

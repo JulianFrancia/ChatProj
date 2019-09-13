@@ -2,7 +2,7 @@ import { SchemaOptions } from 'mongoose';
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Typegoose, prop, pre } from 'typegoose';
 
-@pre('findOneAndUpdate', (next) => {
+@pre('findOneAndUpdate', function (next) {
     this.update.updatedAt = new Date(Date.now());
     next();
 })

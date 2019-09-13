@@ -8,6 +8,7 @@ import { BaseService } from './base.service';
 import { AuthService } from './auth/auth.service';
 import { JwtStrategyService } from './auth/strategies/jwt-strategy/jwt-strategy.service';
 import { UserModule } from '../user/user.module';
+import { FileService } from './services/file.service';
 
 @Global()
 @Module({
@@ -20,6 +21,7 @@ import { UserModule } from '../user/user.module';
     LoggingInterceptor,
     AuthService,
     JwtStrategyService,
+    FileService,
   ],
   exports: [
     ConfigurationService,

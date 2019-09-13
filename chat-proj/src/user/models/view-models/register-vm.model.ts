@@ -5,5 +5,5 @@ export class RegisterVm extends LoginVm {
     @ApiModelPropertyOptional() firstName?: string;
     @ApiModelPropertyOptional() lastName?: string;
     @ApiModelPropertyOptional() nick?: string;
-    @ApiModelPropertyOptional() imageUrl?: string;
+    @ApiModelPropertyOptional() avatarUrl?: string;
 }

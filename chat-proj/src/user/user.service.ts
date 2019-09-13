@@ -32,14 +32,14 @@ export class UserService extends BaseService<User> {
   }
 
   async register(registerVm: RegisterVm): Promise<User> {
-    const { username, password, firstName, lastName, nick, imageUrl } = registerVm;
+    const { username, password, firstName, lastName, nick, avatarUrl } = registerVm;
 
     const newUser = new this.model(); // InstanceType<User>
     newUser.username = username;
     newUser.firstName = firstName;
     newUser.lastName = lastName;
     newUser.nick = nick;
-    newUser.imageUrl = imageUrl;
+    newUser.avatarUrl = avatarUrl;
 
     const salt = await genSalt(10);
     newUser.password = await hash(password, salt);
@@ -78,6 +78,16 @@ export class UserService extends BaseService<User> {
       token,
       user: userVm,
     };
+  }
+
+  public async setAvatar(username: string, avatarUrl: string) {
+    const user = await this.findOne({ username });
+
+    if (!user) {
+      throw new BadRequestException('Invalid Credentials');
+    }
+
+    this.update(user.id, { avatarUrl });
   }
 
 }
