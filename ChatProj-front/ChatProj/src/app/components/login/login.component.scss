@@ -1,0 +1,41 @@
+.main-container {
+    display: block !important;
+    text-align: center;
+    width: 100%;
+    margin-top:19%;
+  }
+  .input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-container > * {
+    width: 100%;
+  }
+
+.list{
+    list-style: none;
+}
+#username-input{
+    width: 50%;
+}
+
+#password-input{
+    width: 50%;
+}
+
+a{
+    text-decoration: none;
+    color:black
+}
+#login-button{
+    width: 30%;
+    font-size:150%;
+    text-align: center;
+}
+#forgot-button{
+    margin-bottom:1%;
+    text-align: center;
+    width: 15%;
+}

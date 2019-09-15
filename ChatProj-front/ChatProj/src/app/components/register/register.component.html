@@ -1,49 +1,50 @@
 <div class="main-container">
-  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" class="login-form">
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
     <!--TITTLE DEL REGISTRO-->
-    <div id="register-tittle-container">
+    <div>
       <h1>Registro</h1>
     </div>
     <!--USERNAME-->
-    <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Nombre de usuario" name="username"
+    <div class="input-container">
+    <mat-form-field>
+      <input  id="username-input" matInput type="text" placeholder="Nombre de usuario" name="username"
         #username="ngModel" [(ngModel)]="user.username" required />
-    </label>
-    <span *ngIf="username.touched && !username.valid" style="color:white">*Debe ingresar un nombre*</span>
+      </mat-form-field>
+      <span *ngIf="username.touched && !username.valid" style="color:white">*Debe ingresar un nombre*</span>
     <!--PASSWORD-->
-    <label for="password" class="formRow--input-wrapper js-inputWrapper">
-      <input id="password" type="password" class="formRow--input js-input" name="password" placeholder="Contraseña"
+    <mat-form-field>
+      <input matInput id="password" type="password" name="password" placeholder="Contraseña"
         #password="ngModel" [(ngModel)]="user.password" required />
+      </mat-form-field>
       <span *ngIf="password.touched && !passLength()" style="color:white;">*La contraseña debe tener al menos 6
         caracteres*</span>
-    </label>
     <!--PASSWORD CONFIRM-->
-    <label for="password-confirm" class="formRow--input-wrapper js-inputWrapper">
-      <input id="confirmpass" type="password" class="formRow--input js-input" name="password-confirm"
-        placeholder="Confirmar contraseña" required />
-      <span id="not_coincidence" style="color:white"></span>
-    </label>
+    <mat-form-field>
+      <input matInput id="confirmpass" type="password"  name="passwordConfirm"
+        #passwordConfirm placeholder="Confirmar contraseña" required />
+    </mat-form-field>
+    <span *ngIf="passwordConfirm.value != password.value" style="color:white">Las contraseñas no coinciden</span>
     <!--FIRSTNAME-->
-    <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Firstname" name="firstname" #firstname="ngModel"
-        [(ngModel)]="user.firstname" />
-    </label>
+    <mat-form-field>
+      <input matInput type="text" placeholder="Firstname" name="firstName" #firstName="ngModel"
+        [(ngModel)]="user.firstName" />
+    </mat-form-field>
     <!--LASTNAME-->
-    <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Lastname" name="lastname" #lastname="ngModel"
-        [(ngModel)]="user.lastname" />
-    </label>
+    <mat-form-field>
+      <input matInput type="text" class="formRow--input js-input" placeholder="Lastname" name="lastName" #lastName="ngModel"
+        [(ngModel)]="user.lastName" />
+    </mat-form-field>    
     <!--NICK-->
-    <label for="nick" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Nuevo nick" name="nick" #nick="ngModel"
+    <mat-form-field>
+      <input matInput type="text" placeholder="Nuevo nick" name="nick" #nick="ngModel"
         [(ngModel)]="user.nick" required />
+    </mat-form-field> 
       <span *ngIf="nick.touched && !nick.valid" style="color:white">*Debe ingresar un nick*</span>
-    </label>
+    </div>  
     <!--IMAGE-->
-    <label for="nick" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Prueba para imagen" />
-    </label>
-    <input type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid" />
+
+    <!--REGISTER BUTTON-->
+    <button mat-raised-button color="primary" type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid">Registrarse</button>
   </form>
   <div id="button-myProfile" style="display:none">
     <a id="btn" [routerLink]='["/feed"]'>Ir a mi perfil</a>

@@ -9,7 +9,7 @@ declare var $: any;
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {
@@ -20,41 +20,7 @@ export class LoginComponent implements OnInit {
     this.stateLogin = false
   }
 
-  ngOnInit() {
-    /** spinner starts on init */
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 5000);
-    // ESTO ES PARA QUE LOS PLACEHOLDERS SUBAN AL BOX
-    const $inputItem = $('.js-inputWrapper');
-    // tslint:disable-next-line: no-unused-expression
-    $inputItem.length &&
-      $inputItem.each(function () {
-        const $this = $(this);
-        const $input = $this.find('.formRow--input');
-        const placeholderTxt = $input.attr('placeholder');
-        let $placeholder;
-        $input.after('<span class="placeholder">' + placeholderTxt + '</span>'),
-          $input.attr('placeholder', ''),
-          ($placeholder = $this.find('.placeholder')),
-          $input.val().length
-            ? $this.addClass('active')
-            : $this.removeClass('active'),
-          $input
-            .on('focusout', () => {
-              $input.val().length
-                ? $this.addClass('active')
-                : $this.removeClass('active');
-            })
-            .on('focus', () => {
-              $this.addClass('active');
-            });
-      });
-
-  }
+  ngOnInit() {}
 
   onSubmit(username: string, password: string) {
     this._userService.login(username, password).subscribe(

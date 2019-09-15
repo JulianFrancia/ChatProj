@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-declare var jQuery: any;
-declare var $: any;
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css'],
+  styleUrls: ['./register.component.scss'],
   providers: [UserService]
 })
 export class RegisterComponent implements OnInit {
@@ -21,55 +20,9 @@ export class RegisterComponent implements OnInit {
     this.user = new User('', '', '', '', '', '');
   }
 
-  ngOnInit() {
-    /** spinner starts on init */
-    this.spinner.show();
-
-    setTimeout(() => {
-      /** spinner ends after 5 seconds */
-      this.spinner.hide();
-    }, 5000);
-    // EFECTO PARA QUE EL PLACEHOLDER SUBA
-    const $inputItem = $('.js-inputWrapper');
-    // tslint:disable-next-line: no-unused-expression
-    $inputItem.length &&
-      $inputItem.each(function () {
-        const $this = $(this);
-        const $input = $this.find('.formRow--input');
-        const placeholderTxt = $input.attr('placeholder');
-        let $placeholder;
-        $input.after('<span class="placeholder">' + placeholderTxt + '</span>'),
-          $input.attr('placeholder', ''),
-          ($placeholder = $this.find('.placeholder')),
-          $input.val().length
-            ? $this.addClass('active')
-            : $this.removeClass('active'),
-          $input
-            .on('focusout', () => {
-              $input.val().length
-                ? $this.addClass('active')
-                : $this.removeClass('active');
-            })
-            .on('focus', () => {
-              $this.addClass('active');
-            });
-      });
-    $('body').bind('cut copy paste', event => {
-      event.preventDefault();
-    });
-  }
+  ngOnInit() { }
 
   onSubmit(form) {
-    if ($('#confirmpass').val() !== $('#password').val()) {
-      $('#not_coincidence').html(
-        '*Las contraseñas no coinciden, intentelo de nuevo'
-      );
-    } else {
-      $('form').fadeOut('slow');
-      if ($('form').css('display', 'none')) {
-        $('#button-myProfile').fadeIn('slow');
-      }
-      $('#not_coincidence').remove();
       this._userService.RegisterUser(this.user).subscribe(
         response => {
           if (response.user) {
@@ -84,11 +37,10 @@ export class RegisterComponent implements OnInit {
       );
       form.reset();
     }
-  }
 
   passLength() {
-    if (this.user.password.length >= 6) {
-      return true;
-    }
+      if (this.user.password.length >= 6) {
+        return true;
+      }
+    }  
   }
-}

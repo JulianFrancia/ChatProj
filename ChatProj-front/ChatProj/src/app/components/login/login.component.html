@@ -1,25 +1,24 @@
 <div class="main-container">
-  <form #loginForm="ngForm" class="login-form" (ngSubmit)="onSubmit(username.value, password.value)">
+  <form #loginForm="ngForm" class="Login-form" (ngSubmit)="onSubmit(username.value, password.value)">
     <!--TITTLE DEL LOGIN-->
-    <h1 id="login-tittle">Login</h1>
+    <h1>Login</h1>
     <!--USERNAME-->
-    <label for="name" class="formRow--input-wrapper js-inputWrapper">
-      <input type="text" class="formRow--input js-input" placeholder="Usuario" name="username" #username />
-    </label>
+    <div class="input-container">
+    <mat-form-field id="username-input" color="warn">
+      <input matInput type="text" placeholder="Usuario" name="username" #username />
+    </mat-form-field>
     <!--PASSWORD-->
-    <label for="password" class="formRow--input-wrapper js-inputWrapper">
-      <input type="password" class="formRow--input js-input" name="password" placeholder="Contraseña" #password />
-    </label>
-    <input type="submit" value="Iniciar sesion" id="btn" [disabled]=""/>
-  </form>
-  <div id="grupo">
-    <ul>
-      <li id="Forgot-pass"><a href="#">Olvide mi contraseña</a></li>
-      <li>¿No tenes cuenta? <a id="Register" [routerLink]='["register"]'>Hacela
-          acá</a></li>
-    </ul>
+    <mat-form-field id="password-input" color="warn">
+      <input matInput type="password" name="password" placeholder="Contraseña" #password />
+    </mat-form-field>
   </div>
-  <div *ngIf="stateLogin">
-    <h1>LOGEADO</h1>
+  <button id="login-button" mat-raised-button color="warn" type="submit" value="Iniciar sesion"  [disabled]="">Login</button>
+  </form>
+  <div>
+    <ul class="list">
+      <li><button id="forgot-button" mat-raised-button color="primary"><a href="#">Olvide mi contraseña</a></button></li>
+      <li>¿No tenes cuenta? <button mat-raised-button color="accent"><a [routerLink]='["register"]'>Hacela
+          acá</a></button></li>
+    </ul>
   </div>
 </div>

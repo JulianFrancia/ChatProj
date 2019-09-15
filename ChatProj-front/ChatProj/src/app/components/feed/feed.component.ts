@@ -8,7 +8,7 @@ import { environment } from '../../../environments/environment';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styleUrls: ['./feed.component.css'],
+  styleUrls: ['./feed.component.scss'],
   providers: [UserService]
 })
 export class FeedComponent implements OnInit {

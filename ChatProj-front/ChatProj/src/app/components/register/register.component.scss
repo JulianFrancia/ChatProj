@@ -1,0 +1,15 @@
+.main-container{
+    display: block !important;
+    text-align: center;
+    width: 100%;
+    margin-top:8%;
+}
+.input-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .input-container > * {
+    width: 50%;
+  }
