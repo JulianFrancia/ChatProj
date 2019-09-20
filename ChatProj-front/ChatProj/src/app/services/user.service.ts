@@ -20,10 +20,16 @@ export class UserService {
     const params = JSON.stringify(user);
     const headers = new HttpHeaders().set('Content-type', 'application/json');
 
-    return this._http.post(this.url + '/user/register', params, {
+    return this._http.post(this.url+'/user/register', params, {
       headers
     });
   }
+  uploadImage(avatar : File):Observable<any>{
+    const formData = new FormData();
+    formData.append('file', avatar);
+    return this._http.post(this.url+'/user/Unusuario/avatar', formData);
+  }
+  
   getUser(id): Observable<any> {
     const headers = new HttpHeaders().set('Content-type', 'application/json');
 

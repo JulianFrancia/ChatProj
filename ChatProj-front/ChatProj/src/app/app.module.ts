@@ -8,7 +8,6 @@ import { routing, appRoutingProviders } from './app.routing';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
-import { MatFileUploadModule } from 'angular-material-fileupload';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -27,7 +26,7 @@ import { FeedComponent } from './components/feed/feed.component';
     MyProfileComponent,
     FeedComponent
   ],
-  imports: [BrowserModule, routing, HttpClientModule, FormsModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatFileUploadModule],
+  imports: [BrowserModule, routing, HttpClientModule, FormsModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })

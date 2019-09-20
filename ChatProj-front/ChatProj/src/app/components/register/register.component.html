@@ -42,7 +42,8 @@
       <span *ngIf="nick.touched && !nick.valid" style="color:white">*Debe ingresar un nick*</span>
     </div>  
     <!--IMAGE-->
-
+    <input type="File"  (change)="processFile($event)">
+    <br>
     <!--REGISTER BUTTON-->
     <button mat-raised-button color="primary" type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid">Registrarse</button>
   </form>
