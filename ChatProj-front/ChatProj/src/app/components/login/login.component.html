@@ -1,24 +1,26 @@
 <div class="main-container">
+    <mat-card class="card">
   <form #loginForm="ngForm" class="Login-form" (ngSubmit)="onSubmit(username.value, password.value)">
     <!--TITTLE DEL LOGIN-->
     <h1>Login</h1>
     <!--USERNAME-->
     <div class="input-container">
-    <mat-form-field id="username-input" color="warn">
+    <mat-form-field id="username-input" color="primary">
       <input matInput type="text" placeholder="Usuario" name="username" #username />
     </mat-form-field>
     <!--PASSWORD-->
-    <mat-form-field id="password-input" color="warn">
+    <mat-form-field id="password-input" color="primary">
       <input matInput type="password" name="password" placeholder="Contraseña" #password />
     </mat-form-field>
   </div>
-  <button id="login-button" mat-raised-button color="warn" type="submit" value="Iniciar sesion"  [disabled]="">Login</button>
-  </form>
   <div>
-    <ul class="list">
-      <li><button id="forgot-button" mat-raised-button color="primary"><a href="#">Olvide mi contraseña</a></button></li>
-      <li>¿No tenes cuenta? <button mat-raised-button color="accent"><a [routerLink]='["register"]'>Hacela
-          acá</a></button></li>
-    </ul>
-  </div>
+      <ul class="list">
+        <li><button class="login-button" mat-raised-button color="warn" type="submit" value="Iniciar sesion"  [disabled]="">Login</button></li>
+        <li><button class="forgot-button" mat-raised-button color="primary"><a href="#" id="forgot-link">Olvide mi contraseña</a></button></li>
+        <li>¿No tenes cuenta? <button mat-raised-button color="accent"><a [routerLink]='["register"]' id="register-button">Hacela
+            acá</a></button></li>
+      </ul>
+    </div>
+  </form>
+</mat-card>
 </div>

@@ -1,9 +1,18 @@
 .main-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 38%;
+  }
+.card{
     display: block !important;
     text-align: center;
     width: 100%;
     margin-top:19%;
-  }
+    padding-bottom:35%;
+}
   .input-container{
     display: flex;
     flex-direction: column;
@@ -15,27 +24,44 @@
   }
 
 .list{
+    list-style: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
     list-style: none;
 }
 #username-input{
-    width: 50%;
+    width: 75%;
 }
 
 #password-input{
-    width: 50%;
+    width: 75%;
+}
+li{
+    margin-top:3%;
 }
 
 a{
     text-decoration: none;
     color:black
 }
-#login-button{
-    width: 30%;
+.login-button{
+    width: 50%;
     font-size:150%;
     text-align: center;
+    margin-top:3.5%;
 }
-#forgot-button{
-    margin-bottom:1%;
+.forgot-button{
+    width: 25%;
+    font-size:90%;
+    text-align: center;
+    margin-top:3.5%;
+}
+#forgot-link{
+    text-align: center;
+    width: 15%;
+}
+#register-button{
     text-align: center;
     width: 15%;
 }
