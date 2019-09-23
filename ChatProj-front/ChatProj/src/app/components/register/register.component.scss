@@ -1,8 +1,17 @@
 .main-container{
-    display: block !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  width: 38%;
+}
+.card{
+  display: block !important;
     text-align: center;
     width: 100%;
-    margin-top:8%;
+    margin-top:19%;
+    padding-bottom:35%;
 }
 .input-container{
     display: flex;
@@ -11,5 +20,5 @@
     align-items: center;
   }
   .input-container > * {
-    width: 50%;
+    width: 75%;
   }

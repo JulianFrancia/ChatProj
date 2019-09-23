@@ -3,8 +3,6 @@ import { UserLogged } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
-declare var jQuery: any;
-declare var $: any;
 
 @Component({
   selector: 'app-login',

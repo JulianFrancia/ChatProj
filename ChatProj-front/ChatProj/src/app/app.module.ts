@@ -1,14 +1,19 @@
 //SERVICIOS
 import { BrowserModule } from '@angular/platform-browser';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
+
+
+//MATERIAL
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
+import {MatStepperModule} from '@angular/material/stepper';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -27,7 +32,21 @@ import { FeedComponent } from './components/feed/feed.component';
     MyProfileComponent,
     FeedComponent
   ],
-  imports: [BrowserModule, routing, HttpClientModule, FormsModule, BrowserAnimationsModule, MatFormFieldModule, MatInputModule, MatButtonModule, MatCardModule],
+  imports: [
+  //SERVICIOS ANGULAR  
+  BrowserModule,
+  routing,
+  HttpClientModule, 
+  FormsModule,
+  //ANGULAR MATERIAL
+  BrowserAnimationsModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonModule,
+  MatCardModule,
+  MatStepperModule,
+  MaterialFileInputModule
+],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]
 })

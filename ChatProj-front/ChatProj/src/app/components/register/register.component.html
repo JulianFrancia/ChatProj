@@ -1,5 +1,6 @@
 <div class="main-container">
-  <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+  <mat-card class="card">
+  <form *ngIf="prueba == false" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
     <!--TITTLE DEL REGISTRO-->
     <div>
       <h1>Registro</h1>
@@ -10,23 +11,23 @@
       <input  id="username-input" matInput type="text" placeholder="Nombre de usuario" name="username"
         #username="ngModel" [(ngModel)]="user.username" required />
       </mat-form-field>
-      <span *ngIf="username.touched && !username.valid" style="color:white">*Debe ingresar un nombre*</span>
+      <span *ngIf="username.touched && !username.valid" style="color:red">*Debe ingresar un nombre*</span>
     <!--PASSWORD-->
     <mat-form-field>
       <input matInput id="password" type="password" name="password" placeholder="Contraseña"
         #password="ngModel" [(ngModel)]="user.password" required />
       </mat-form-field>
-      <span *ngIf="password.touched && !passLength()" style="color:white;">*La contraseña debe tener al menos 6
+      <span *ngIf="password.touched && !passLength()" style="color:red;">*La contraseña debe tener al menos 6
         caracteres*</span>
     <!--PASSWORD CONFIRM-->
     <mat-form-field>
       <input matInput id="confirmpass" type="password"  name="passwordConfirm"
-        #passwordConfirm placeholder="Confirmar contraseña" required />
+        #passwordConfirm="ngModel" [(ngModel)]="passConfirm" placeholder="Confirmar contraseña" required />
     </mat-form-field>
-    <span *ngIf="passwordConfirm.value != password.value" style="color:white">Las contraseñas no coinciden</span>
+    <span *ngIf="passwordConfirm.touched && passwordConfirm.value != password.value" style="color:red">Las contraseñas no coinciden</span>
     <!--FIRSTNAME-->
     <mat-form-field>
-      <input matInput type="text" placeholder="Firstname" name="firstName" #firstName="ngModel"
+      <input matInput  type="text" placeholder="Firstname" name="firstName" #firstName="ngModel"
         [(ngModel)]="user.firstName" />
     </mat-form-field>
     <!--LASTNAME-->
@@ -41,14 +42,13 @@
     </mat-form-field> 
       <span *ngIf="nick.touched && !nick.valid" style="color:white">*Debe ingresar un nick*</span>
     </div>  
-    <!--IMAGE-->
-    <input type="File"  (change)="processFile($event)">
-    <br>
+    <!--IMAGE UPLOAD-->
+    <!-- <input type="File"  (change)="processFile($event)"> -->
     <!--REGISTER BUTTON-->
     <button mat-raised-button color="primary" type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid">Registrarse</button>
   </form>
-  <div id="button-myProfile" style="display:none">
-    <a id="btn" [routerLink]='["/feed"]'>Ir a mi perfil</a>
-  </div>
+  <mat-form-field *ngIf="prueba" >
+    <ngx-mat-file-input  placeholder="Subir imagen.."  (change)="processFile($event)"></ngx-mat-file-input>
+  </mat-form-field>
+</mat-card>
 </div>
-<!-- <ngx-spinner bdColor="rgba(51,51,51,0.6)" size="large" color="#fff" type="pacman"></ngx-spinner> -->

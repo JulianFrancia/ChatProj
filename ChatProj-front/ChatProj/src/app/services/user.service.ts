@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
+  public user:User;
   public url: string;
   public usserLogged:UserLogged;
 
@@ -24,10 +25,10 @@ export class UserService {
       headers
     });
   }
-  uploadImage(avatar : File):Observable<any>{
+  uploadImage(avatar : File, username:string ):Observable<any>{
     const formData = new FormData();
     formData.append('file', avatar);
-    return this._http.post(this.url+'/user/Unusuario/avatar', formData);
+    return this._http.post(this.url+'/user/'+username+'/avatar', formData);
   }
   
   getUser(id): Observable<any> {

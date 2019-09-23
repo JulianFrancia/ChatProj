@@ -19,10 +19,13 @@ export class RegisterComponent implements OnInit {
   public saveUser;
   public status: string;
   public selectedFile: ImageSnippet;
+  public passConfirm;
+  public prueba:boolean;
 
   // tslint:disable-next-line: variable-name
   constructor(private _userService : UserService) {
     this.user = new User('', '', '', '', '', '');
+    this.prueba = false;
   }
 
   ngOnInit() { }
@@ -32,7 +35,7 @@ export class RegisterComponent implements OnInit {
         response => {
           if (response.user) {
             this.status = 'succes';
-            //Subir la imagen
+            this.prueba = true;
           } else {
             this.status = 'failed';
           }
@@ -41,6 +44,7 @@ export class RegisterComponent implements OnInit {
           console.log(error as any);
         }
       );
+      this.prueba = true;
     }
 
   passLength() {
@@ -56,7 +60,7 @@ export class RegisterComponent implements OnInit {
   
         this.selectedFile = new ImageSnippet(event.target.result, file);
   
-        this._userService.uploadImage(this.selectedFile.file).subscribe(
+        this._userService.uploadImage(this.selectedFile.file, this.user.username).subscribe(
           (res) => {
           console.log(res);
           },
