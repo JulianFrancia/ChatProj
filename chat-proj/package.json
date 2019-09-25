@@ -5,11 +5,12 @@
   "author": "",
   "license": "MIT",
   "scripts": {
-    "build": "rimraf dist && tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "start": "ts-node -r tsconfig-paths/register src/main.ts",
-    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/src/main.js\"",
-    "start:debug": "tsc-watch -p tsconfig.build.json --onSuccess \"node --inspect-brk dist/src/main.js\"",
+    "start:dev": "tsc-watch -p tsconfig.build.json --onSuccess \"node dist/main.js\"",
+    "start:debug": "nodemon --config nodemon-debug.json",
+    "prestart:prod": "rimraf dist && npm run build",
     "start:prod": "node dist/main.js",
     "lint": "tslint -p tsconfig.json -c tslint.json",
     "test": "jest",
@@ -36,6 +37,7 @@
     "lodash": "^4.17.15",
     "mongoose": "^5.6.9",
     "multer": "^1.4.2",
+    "nodemon": "^1.19.2",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "reflect-metadata": "^0.1.12",
@@ -61,11 +63,11 @@
     "prettier": "1.17.0",
     "supertest": "4.0.2",
     "ts-jest": "24.0.2",
-    "ts-node": "8.1.0",
+    "ts-node": "^8.3.0",
     "tsc-watch": "2.2.1",
     "tsconfig-paths": "3.8.0",
     "tslint": "5.16.0",
-    "typescript": "3.4.3"
+    "typescript": "^3.6.2"
   },
   "jest": {
     "moduleFileExtensions": [
