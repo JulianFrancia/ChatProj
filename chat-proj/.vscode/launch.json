@@ -10,5 +10,6 @@
         "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
         "args": ["${workspaceFolder}/src/main.ts"],
         "autoAttachChildProcesses": true,
+        "protocol": "inspector"
     }]
 }
