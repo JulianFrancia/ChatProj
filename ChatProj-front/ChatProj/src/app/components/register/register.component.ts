@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
 import { UserService } from '../../services/user.service';
-import { environment } from '../../../environments/environment'
 
 class ImageSnippet {
   constructor(public src: string, public file: File) {}

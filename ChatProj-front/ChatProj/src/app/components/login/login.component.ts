@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UserLogged } from '../../models/user.model';
+import { FormControl,  FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
-import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-login',
@@ -11,22 +10,28 @@ import { NgxSpinnerService } from 'ngx-spinner';
   providers: [UserService]
 })
 export class LoginComponent implements OnInit {
-  public userLogged: UserLogged;
-  public stateLogin: boolean
+  public stateLogin: boolean;
+  loginForm = new FormGroup({
+    username : new FormControl('', [Validators.required]),
+    password: new FormControl('', [Validators.required]),
+  })
 
-  constructor(private _userService: UserService, private router: Router, private spinner: NgxSpinnerService) {
+
+  constructor(private _userService: UserService, private router: Router) {
     this.stateLogin = false
   }
 
   ngOnInit() {}
+  prueba(user:string,password:string){
+    console.log(user+' Soy el usuario')
+    console.log(password+' Soy la pass')
+  }
 
-  onSubmit(username: string, password: string) {
-    this._userService.login(username, password).subscribe(
+  onSubmit(username:string,password:string) {
+    this._userService.login(username,password).subscribe(
       res => {
         console.log(res);
-        console.log('Logeado');
-        let u: UserLogged = {name: username};        
-        this._userService.setUserLoggedIn(u);
+        localStorage.setItem('currentToken', res.token)
         this.stateLogin = true;        
       },
       error => {

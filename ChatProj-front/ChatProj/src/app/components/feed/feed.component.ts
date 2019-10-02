@@ -22,12 +22,8 @@ export class FeedComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.userLogged = this._userService.getUserLoggedIn()
   }
-  deslog(){
-    localStorage.removeItem('currentUser') 
-    this.userLogged.name=''
-  }
+
 
 
 }

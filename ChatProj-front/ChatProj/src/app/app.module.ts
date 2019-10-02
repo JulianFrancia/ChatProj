@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 
@@ -14,6 +15,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatCardModule} from '@angular/material/card';
 import {MatStepperModule} from '@angular/material/stepper';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
+import {MatIconModule} from '@angular/material/icon';
 
 //COMPONENTES
 import { AppComponent } from './app.component';
@@ -38,6 +40,7 @@ import { FeedComponent } from './components/feed/feed.component';
   routing,
   HttpClientModule, 
   FormsModule,
+  ReactiveFormsModule,
   //ANGULAR MATERIAL
   BrowserAnimationsModule,
   MatFormFieldModule,
@@ -45,7 +48,8 @@ import { FeedComponent } from './components/feed/feed.component';
   MatButtonModule,
   MatCardModule,
   MatStepperModule,
-  MaterialFileInputModule
+  MaterialFileInputModule,
+  MatIconModule
 ],
   providers: [appRoutingProviders],
   bootstrap: [AppComponent]

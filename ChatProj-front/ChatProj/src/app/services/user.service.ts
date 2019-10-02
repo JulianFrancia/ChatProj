@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { UserLogged } from '../models/user.model';
 import { environment } from '../../environments/environment';
+import { Form } from '@angular/forms';
 
 @Injectable()
 export class UserService {
@@ -13,8 +15,9 @@ export class UserService {
 
 
   // tslint:disable-next-line: variable-name
-  constructor(private _http: HttpClient) {
+  constructor(private _http: HttpClient, private router: Router) {
     this.url = environment.serviceUrl;
+    this.userLogged();
   }
 
   RegisterUser(user: User): Observable<any> {
@@ -38,14 +41,17 @@ export class UserService {
   };
 
   login(username: string, password: string): Observable<any> {
-    return this._http.post(this.url + '/user/login', { username: username, password: password })
+    return this._http.post(this.url + '/user/login', { username, password })
   }
-  setUserLoggedIn(user:UserLogged){
-    this.usserLogged = user;
-    localStorage.setItem('currentUser', JSON.stringify(user))
+  logout(){
+    localStorage.removeItem('currentToken');
+    this.router.navigateByUrl('/');
   }
-
-  getUserLoggedIn() {
-  	return JSON.parse(localStorage.getItem('currentUser'));
+  userLogged(){
+    if(this.router.url != '/register'){
+      if(localStorage.getItem('currentToken') == null){
+        this.router.navigateByUrl('/');
+      }
+    }
   }
 }

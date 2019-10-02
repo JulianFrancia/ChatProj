@@ -1,26 +1,30 @@
 <div class="main-container">
     <mat-card class="card">
-  <form #loginForm="ngForm" class="Login-form" (ngSubmit)="onSubmit(username.value, password.value)">
     <!--TITTLE DEL LOGIN-->
     <h1>Login</h1>
-    <!--USERNAME-->
-    <div class="input-container">
-    <mat-form-field id="username-input" color="primary">
-      <input matInput type="text" placeholder="Usuario" name="username" #username />
-    </mat-form-field>
-    <!--PASSWORD-->
-    <mat-form-field id="password-input" color="primary">
-      <input matInput type="password" name="password" placeholder="Contraseña" #password />
-    </mat-form-field>
-  </div>
-  <div>
-      <ul class="list">
-        <li><button class="login-button" mat-raised-button color="warn" type="submit" value="Iniciar sesion"  [disabled]="">Login</button></li>
-        <li><button class="forgot-button" mat-raised-button color="primary"><a href="#" id="forgot-link">Olvide mi contraseña</a></button></li>
-        <li>¿No tenes cuenta? <button mat-raised-button color="accent"><a [routerLink]='["register"]' id="register-button">Hacela
-            acá</a></button></li>
-      </ul>
-    </div>
-  </form>
+    <form [formGroup]="loginForm" class="Login-form" (ngSubmit)=" onSubmit(loginForm.value.username, loginForm.value.password)">
+      <!--USERNAME-->
+      <div class="input-container">
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="Usuario" formControlName="username" required>
+          <mat-error *ngIf="loginForm.controls.username.invalid">Ingresa un usuario</mat-error>
+        </mat-form-field>
+      </div>
+      <!--PASSWORD-->
+      <div class="input-container">
+        <mat-form-field id="password-input" color="primary">
+          <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
+          <mat-error *ngIf="loginForm.controls.password.invalid">Ingresa una contraseña</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <ul class="list">
+          <li><button class="login-button" mat-raised-button color="warn" type="submit" value="Iniciar sesion"  [disabled]="">Login</button></li>
+          <li><button  mat-raised-button color="primary"><a href="#" id="forgot-link">Olvide mi contraseña</a></button></li>
+          <li>¿No tenes cuenta? <button mat-raised-button color="accent"><a [routerLink]='["register"]' id="register-button">Hacela
+              acá</a></button></li>
+        </ul>
+      </div>
+    </form>
 </mat-card>
 </div>

@@ -1,17 +1,19 @@
 <div class="main-container">
   <mat-card class="card">
-  <form *ngIf="prueba == false" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
     <!--TITTLE DEL REGISTRO-->
     <div>
-      <h1>Registro</h1>
+        <h1>Registro</h1>
     </div>
+  <form *ngIf="prueba == false" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
     <!--USERNAME-->
     <div class="input-container">
     <mat-form-field>
       <input  id="username-input" matInput type="text" placeholder="Nombre de usuario" name="username"
         #username="ngModel" [(ngModel)]="user.username" required />
       </mat-form-field>
-      <span *ngIf="username.touched && !username.valid" style="color:red">*Debe ingresar un nombre*</span>
+      <mat-error *ngIf="username.touched && !username.valid" style="color:red">
+          *Debe ingresar un nombre*
+      </mat-error>
     <!--PASSWORD-->
     <mat-form-field>
       <input matInput id="password" type="password" name="password" placeholder="Contraseña"
@@ -47,8 +49,9 @@
     <!--REGISTER BUTTON-->
     <button mat-raised-button color="primary" type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid">Registrarse</button>
   </form>
-  <mat-form-field *ngIf="prueba" >
-    <ngx-mat-file-input  placeholder="Subir imagen.."  (change)="processFile($event)"></ngx-mat-file-input>
-  </mat-form-field>
+  <button mat-icon-button *ngIf="prueba">
+      <input type="file" style="display:none" placeholder="Subir imagen.."  (change)="processFile($event)">
+      <mat-icon svgIcon="paperclip" matTooltip="Subir foto" matTooltipPosition="below"></mat-icon>
+  </button>
 </mat-card>
 </div>
