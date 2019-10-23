@@ -10,6 +10,7 @@ import { ValidationPipe } from './shared/pipes/validation.pipe';
 import { SharedModule } from './shared/shared.module';
 import { ConfigurationService } from './shared/configuration/configuration.service';
 import { Configuration } from './shared/configuration/configuration.enum';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [
@@ -36,6 +37,7 @@ import { Configuration } from './shared/configuration/configuration.enum';
       provide: APP_PIPE,
       useClass: ValidationPipe,
     },
+    AppGateway,
   ],
 })
 export class AppModule {
