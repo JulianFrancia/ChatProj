@@ -22,10 +22,6 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {}
-  prueba(user:string,password:string){
-    console.log(user+' Soy el usuario')
-    console.log(password+' Soy la pass')
-  }
 
   onSubmit(username:string,password:string) {
     this._userService.login(username,password).subscribe(
@@ -43,5 +39,6 @@ export class LoginComponent implements OnInit {
   navigate() {    
     this.router.navigateByUrl('/feed');
   }
+
 
 }

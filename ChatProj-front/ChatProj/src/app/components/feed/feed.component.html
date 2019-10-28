@@ -1,1 +1,11 @@
-<h1 style="color:black">INICIO</h1>
+<div class="chatBox">
+    <div class="textChat">
+        <p *ngFor="let message of messages">{{message}}</p>
+    </div>
+</div>
+<div class="inputBox">
+    <form [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value.chatBox)">
+            <textarea class="inputChat" formControlName="chatBox"></textarea>
+            <button class="sendButton" type="submit">Enviar</button>
+    </form>
+</div>
