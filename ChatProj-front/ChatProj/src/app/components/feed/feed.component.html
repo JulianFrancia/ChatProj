@@ -1,11 +1,25 @@
-<div class="chatBox">
+<div class="row">
+  <div class="col-sm">
+    <label for="roomInput">Choose Room</label>
+    <mat-select name="roomInput" id="roomInput" [(ngModel)]="room">
+      <mat-option value="Lobby">Lobby</mat-option>
+      <mat-option value="Hall">Hall</mat-option>
+      <mat-option value="Deluxe">Deluxe</mat-option>
+    </mat-select>
+  </div>
+  <div class="col-sm">
+    <label for="roomInput">Choose Room</label>
+    <button type="button" class="btn" (click)="join()">Join</button>
+  </div>
+  <div class="chatBox">
     <div class="textChat">
-        <p *ngFor="let message of messages">{{message}}</p>
+      <p *ngFor="let message of messages">{{message}}</p>
     </div>
+  </div>
 </div>
 <div class="inputBox">
-    <form [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value.chatBox)">
-            <textarea class="inputChat" formControlName="chatBox"></textarea>
-            <button class="sendButton" type="submit">Enviar</button>
-    </form>
+  <form [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value.chatBox)">
+    <textarea class="inputChat" formControlName="chatBox"></textarea>
+    <button class="sendButton" type="submit">Enviar</button>
+  </form>
 </div>
