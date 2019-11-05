@@ -9,6 +9,6 @@ export class User {
   ) { }
 }
 
-export class UserLogged{
-  public name:string
+export class UserLogged {
+  public name: string;
 }

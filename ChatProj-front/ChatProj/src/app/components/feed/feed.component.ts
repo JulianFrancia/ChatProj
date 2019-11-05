@@ -16,13 +16,15 @@ import { ChatService } from '../../../app/services/chat.service';
 export class FeedComponent implements OnInit {
   room: string;
   user: User;
-  userLogged: UserLogged;
+  userLogged: UserLogged; /* ??????? */
   url: string;
+  messageArray: Array<{ user: string, message: string }> = [];
 
-  chatForm = new FormGroup({
-    chatBox: new FormControl('', [Validators.required])
-  });
-  public messages = [];
+  // chatForm = new FormGroup({
+  //   chatBox: new FormControl('', [Validators.required])
+  // });
+
+  // public messages = [];
 
 
   constructor(
@@ -32,6 +34,8 @@ export class FeedComponent implements OnInit {
     private readonly _chatService: ChatService,
   ) {
     // this.user = this._userService.();
+    this._chatService.newUserJoined()
+      .subscribe(data => this.messageArray.push(data));
   }
 
   ngOnInit() {
@@ -41,9 +45,9 @@ export class FeedComponent implements OnInit {
     this._chatService.joinRoom({ user: 'unUsuario', room: this.room }); // this.user.nick
   }
 
-  onSubmit(textChat) {
-    this.messages.push(textChat);
-    this.chatForm.reset();
-  }
+  // onSubmit(textChat) {
+  //   this.messages.push(textChat);
+  //   this.chatForm.reset();
+  // }
 
 }

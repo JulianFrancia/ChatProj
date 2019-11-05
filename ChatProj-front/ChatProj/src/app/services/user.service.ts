@@ -43,10 +43,12 @@ export class UserService {
   login(username: string, password: string): Observable<any> {
     return this._http.post(this.url + '/user/login', { username, password });
   }
+
   logout() {
     localStorage.removeItem('currentToken');
     this.router.navigateByUrl('/');
   }
+
   userLogged() {
     if (this.router.url !== '/register') {
       if (localStorage.getItem('currentToken') == null) {
