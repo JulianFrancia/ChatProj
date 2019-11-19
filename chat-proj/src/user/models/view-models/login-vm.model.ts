@@ -1,6 +1,12 @@
 import { ApiModelProperty } from '@nestjs/swagger';
+import { IsNotEmpty } from 'class-validator';
 
 export class LoginVm {
-    @ApiModelProperty() username: string;
-    @ApiModelProperty() password: string;
+    @IsNotEmpty()
+    @ApiModelProperty()
+    username: string;
+
+    @IsNotEmpty()
+    @ApiModelProperty()
+    password: string;
 }

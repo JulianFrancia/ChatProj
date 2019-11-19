@@ -1,25 +1,39 @@
-version: '2'
+# Cambiar la ip del HOST por la correspondiente al servidor donde se esté corriendo el docker container
+# Cambiar la IP de la base de datos de mongo por la correspondiente
+# Cambiar las credenciales para la base de datos de mongo correspondiente
+# El puerto interno del contenedor debe ser igual al externo para evitar fallos por CORS en el Swagger
+
+version: '3.5'
 
 services:
-  chatprojapi:
+  chat-proj-api:
     build: .
-    container_name: chatproj-api
+    container_name: chat-proj-api
     restart: always
-    network_mode: bridge
+#    network_mode: bridge
     ports:
-      - 3005:3000
+      - 3006:3006
     volumes:
       - ./upload:/usr/src/app/upload
     environment:
-      - MONGO_URI=mongodb://localhost/chatProj
-      - HOST=http://localhost
-      - PORT=8080
+      - MONGO_URI=mongodb://admin:admin@192.168.1.35:27017/userManager
+      - HOST=http://192.168.1.35
+      - PORT=3006
       - JWT_KEY=lfjf
 
-      - VIRTUAL_HOST=chatprojapi.com
+      - VIRTUAL_HOST=chat-projapi.com
       - VIRTUAL_PORT=80
-      - DATABASE=chatProj
+      - DATABASE=chat-proj
       - SYNCHRONIZE=false
-      - NODE_ENV=production
+      - NODE_ENV=development
       - CORS_URLS=http://localhost:4200
       - CORS_METHODS=OPTIONS,GET,HEAD,PUT,PATCH,POST,DELETE
+    networks:
+      -  mongo_db_default
+networks:
+  mongo_db_default:
+    external: false
+    name: mongo_db_default
+  default:
+    external:
+      name: mongo_db_default

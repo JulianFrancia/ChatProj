@@ -32,7 +32,7 @@ export class UserService extends BaseService<User> {
   }
 
   async register(registerVm: RegisterVm): Promise<User> {
-    const { username, password, firstName, lastName, nick, avatarUrl } = registerVm;
+    const { username, password, email, firstName, lastName, nick, avatarUrl } = registerVm;
 
     const newUser = new this.model(); // InstanceType<User>
     newUser.username = username;
@@ -40,6 +40,7 @@ export class UserService extends BaseService<User> {
     newUser.lastName = lastName;
     newUser.nick = nick;
     newUser.avatarUrl = avatarUrl;
+    newUser.email = email;
 
     const salt = await genSalt(10);
     newUser.password = await hash(password, salt);

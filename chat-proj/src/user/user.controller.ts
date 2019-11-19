@@ -40,15 +40,7 @@ export class UserController {
     @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: ApiException })
     @ApiOperation(GetOperationId(User.modelName, 'Register'))
     async register(@Body() registerVm: RegisterVm): Promise<UserVm> {
-        const { username, password } = registerVm;
-
-        if (!username) {
-            throw new BadRequestException('Username is required');
-        }
-
-        if (!password) {
-            throw new BadRequestException('Password is required');
-        }
+        const { username } = registerVm;
 
         let exist;
         try {
