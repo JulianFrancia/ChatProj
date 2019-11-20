@@ -1,4 +1,4 @@
-cd chat-proj-api
+cd ChatProj/chat-proj
 git push
 docker-compose build
 docker-compose up -d
