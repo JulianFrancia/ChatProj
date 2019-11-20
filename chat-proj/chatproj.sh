@@ -1,5 +1,5 @@
-cd chat-proj
-svn update
+cd chat-proj-api
+git push
 docker-compose build
 docker-compose up -d
 docker ps

@@ -23,7 +23,7 @@ services:
 
       - VIRTUAL_HOST=chat-projapi.com
       - VIRTUAL_PORT=80
-      - DATABASE=chat-proj
+      - DATABASE=chatProj
       - SYNCHRONIZE=false
       - NODE_ENV=development
       - CORS_URLS=http://localhost:4200
