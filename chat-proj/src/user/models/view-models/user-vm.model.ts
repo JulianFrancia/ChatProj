@@ -7,7 +7,7 @@ import { User } from '../user.model';
 export class UserVm extends BaseModel<User> {
     @ApiModelProperty() username: string;
     @ApiModelPropertyOptional() nick: string;
-    @ApiModelPropertyOptional() avatarUrl?: UserRole;
+    @ApiModelPropertyOptional() avatarUrl?: string;
     @ApiModelPropertyOptional() firstName?: string;
     @ApiModelPropertyOptional() lastName?: string;
     @ApiModelPropertyOptional() fullName?: string;
