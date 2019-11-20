@@ -28,8 +28,8 @@ services:
       - NODE_ENV=development
       - CORS_URLS=http://localhost:4200
       - CORS_METHODS=OPTIONS,GET,HEAD,PUT,PATCH,POST,DELETE
-    networks:
-      -  mongo_db_default
+    # networks:
+    #   -  mongo_db_default
 # networks:
 #   mongo_db_default:
 #     external: false
