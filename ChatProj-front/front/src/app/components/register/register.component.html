@@ -4,54 +4,60 @@
       <div>
           <h1>Registro</h1>
       </div>
-    <form *ngIf="prueba == false" #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value.username, registerForm.value.password, registerForm.value.nickName, registerForm.value.firstName, registerForm.value.lastName, registerForm.value.email)">
       <!--USERNAME-->
       <div class="input-container">
-      <mat-form-field>
-        <input  id="username-input" matInput type="text" placeholder="Nombre de usuario" name="username"
-          #username="ngModel" [(ngModel)]="user.username" required />
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="Usuario" formControlName="username" required>
+          <mat-error *ngIf="registerForm.controls.username.invalid">Ingresa un usuario</mat-error>
         </mat-form-field>
-        <mat-error *ngIf="username.touched && !username.valid" style="color:red">
-            *Debe ingresar un nombre*
-        </mat-error>
+      </div>
       <!--PASSWORD-->
-      <mat-form-field>
-        <input matInput id="password" type="password" name="password" placeholder="Contraseña"
-          #password="ngModel" [(ngModel)]="user.password" required />
+      <div class="input-container">
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="Contrasenia" formControlName="password" required>
+          <mat-error *ngIf="registerForm.controls.password.invalid">Ingresa una contrasenia mayor a 6 caracteres</mat-error>
         </mat-form-field>
-        <span *ngIf="password.touched && !passLength()" style="color:red;">*La contraseña debe tener al menos 6
-          caracteres*</span>
-      <!--PASSWORD CONFIRM-->
-      <mat-form-field>
-        <input matInput id="confirmpass" type="password"  name="passwordConfirm"
-          #passwordConfirm="ngModel" [(ngModel)]="passConfirm" placeholder="Confirmar contraseña" required />
-      </mat-form-field>
-      <span *ngIf="passwordConfirm.touched && passwordConfirm.value != password.value" style="color:red">Las contraseñas no coinciden</span>
+      </div>
+      <!--CONFIRM PASSWORD-->
+      <div class="input-container">
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="Confirmar contrasenia" formControlName="confirmPassword" [errorStateMatcher]="errorMatcher" required>
+          <mat-error *ngIf="registerForm.hasError('passwordsDoNotMatch')">Son diferentes</mat-error>
+        </mat-form-field>
+      </div>
       <!--FIRSTNAME-->
-      <mat-form-field>
-        <input matInput  type="text" placeholder="Firstname" name="firstName" #firstName="ngModel"
-          [(ngModel)]="user.firstName" />
-      </mat-form-field>
+      <div class="input-container">
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="Firstname" formControlName="firstName">
+          <mat-error *ngIf="registerForm.controls.firstName.invalid">Ingrese un firstName</mat-error>
+        </mat-form-field>
+      </div>
       <!--LASTNAME-->
-      <mat-form-field>
-        <input matInput type="text" class="formRow--input js-input" placeholder="Lastname" name="lastName" #lastName="ngModel"
-          [(ngModel)]="user.lastName" />
-      </mat-form-field>    
-      <!--NICK-->
-      <mat-form-field>
-        <input matInput type="text" placeholder="Nuevo nick" name="nick" #nick="ngModel"
-          [(ngModel)]="user.nick" required />
-      </mat-form-field> 
-        <span *ngIf="nick.touched && !nick.valid" style="color:white">*Debe ingresar un nick*</span>
-      </div>  
-      <!--IMAGE UPLOAD-->
-      <!-- <input type="File"  (change)="processFile($event)"> -->
-      <!--REGISTER BUTTON-->
-      <button mat-raised-button color="primary" type="submit" value="Registrarse" id="btn" [disabled]="!registerForm.form.valid">Registrarse</button>
-    </form>
-    <button mat-icon-button *ngIf="prueba">
-        <input type="file" style="display:none" placeholder="Subir imagen.."  (change)="processFile($event)">
-        <mat-icon svgIcon="paperclip" matTooltip="Subir foto" matTooltipPosition="below"></mat-icon>
-    </button>
+      <div class="input-container">
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="Lastname" formControlName="lastName">
+          <mat-error *ngIf="registerForm.controls.lastName.invalid">Ingrese un lastName</mat-error>
+        </mat-form-field>
+      </div>
+      <!--EMAIL-->
+      <div class="input-container">
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="email" formControlName="email" required>
+          <mat-error *ngIf="registerForm.controls.email.invalid">Ingrese un email</mat-error>
+        </mat-form-field>
+      </div>
+      <!--NICKNAME-->
+      <div class="input-container">
+        <mat-form-field id="username-input" color="primary">
+          <input matInput placeholder="Nickname" formControlName="nickName" required>
+          <mat-error *ngIf="registerForm.controls.nickName.invalid">Ingrese un nickname</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+       <!-- <input *ngIf="" type="file" formControlName="image" (change)="processFile($event)"> -->
+      </div>
+      <button mat-raised-button color="primary" type="submit">Registrarme</button>
+      </form>
   </mat-card>
   </div>

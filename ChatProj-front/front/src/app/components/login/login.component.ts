@@ -14,21 +14,21 @@ export class LoginComponent implements OnInit {
   loginForm = new FormGroup({
     username : new FormControl('', [Validators.required]),
     password: new FormControl('', [Validators.required]),
-  })
+  });
 
 
   constructor(private _userService: UserService, private router: Router) {
-    this.stateLogin = false
+    this.stateLogin = false;
   }
 
   ngOnInit() {}
 
-  onSubmit(username:string,password:string) {
-    this._userService.login(username,password).subscribe(
+  onSubmit(username: string, password: string) {
+    this._userService.login(username, password).subscribe(
       res => {
         console.log(res);
-        localStorage.setItem('currentToken', res.token)
-        this.stateLogin = true;        
+        localStorage.setItem('currentToken', res.token);
+        this.stateLogin = true;
       },
       error => {
         console.error(error);
@@ -36,9 +36,7 @@ export class LoginComponent implements OnInit {
       () => this.navigate()
     );
   }
-  navigate() {    
+  navigate() {
     this.router.navigateByUrl('/feed');
   }
-
-
-}
+};

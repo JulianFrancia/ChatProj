@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { UserLogged } from '../models/user.model';
 import { environment } from '../../environments/environment';
-import { Form } from '@angular/forms';
 
 @Injectable()
 export class UserService {
@@ -31,7 +30,7 @@ export class UserService {
   uploadImage(avatar: File, username: string): Observable<any> {
     const formData = new FormData();
     formData.append('file', avatar);
-    return this._http.post(this.url + '/user/' + username + '/avatar', formData);
+    return this._http.post(this.url + '/user/' + username + 'avatar', formData);
   }
 
   getUser(id): Observable<any> {
