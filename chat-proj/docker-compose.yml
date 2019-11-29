@@ -16,7 +16,7 @@ services:
     volumes:
       - ./upload:/usr/src/app/upload
     environment:
-      - MONGO_URI=mongodb://admin:admin@mongodb/userManager
+      - MONGO_URI=mongodb://admin:admin@mongodb/chatProj
       - HOST=http://34.69.232.230
       - PORT=3006
       - JWT_KEY=lfjf
