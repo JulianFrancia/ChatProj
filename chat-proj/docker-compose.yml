@@ -28,10 +28,11 @@ services:
       - NODE_ENV=development
       - CORS_URLS=http://localhost:4200
       - CORS_METHODS=OPTIONS,GET,HEAD,PUT,PATCH,POST,DELETE
-    networks:
-      default:
-        external:
-          name: chatproj
+
+networks:
+  default:
+    external:
+      name: chatproj
 
 # networks:
 #   chatproj:
