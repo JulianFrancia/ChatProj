@@ -13,7 +13,7 @@ import {
     UploadedFile,
 } from '@nestjs/common';
 import { UserService } from './user.service';
-import { ApiUseTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UserVm } from './models/view-models/user-vm.model';
 import { User } from './models/user.model';
@@ -27,7 +27,7 @@ import { extname } from 'path';
 import { diskStorage } from 'multer';
 
 @Controller('user')
-@ApiUseTags(User.modelName)
+@ApiTags(User.modelName)
 export class UserController {
 
     SERVER_URL = 'localhost:3000';

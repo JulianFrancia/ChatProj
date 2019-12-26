@@ -12,10 +12,7 @@ async function bootstrap() {
     .setTitle('ChatProject')
     .setDescription('La app que me va a hacer pegarla')
     .setVersion('1.0.0')
-    .setHost(hostDomain.split('//')[1])
-    .setSchemes(AppModule.isDev ? 'http' : 'https')
-    // .setBasePath('/api')
-    .addBearerAuth('Authorization', 'header')
+    .addBearerAuth()
     .build();
 
   const swaggerDoc = SwaggerModule.createDocument(app, swaggerOptions);

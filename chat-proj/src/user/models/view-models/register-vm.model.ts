@@ -1,26 +1,25 @@
 import { LoginVm } from './login-vm.model';
-import { ApiModelPropertyOptional, ApiModelProperty } from '@nestjs/swagger';
+import { ApiPropertyOptional, ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsNotEmpty } from 'class-validator';
 
 export class RegisterVm extends LoginVm {
-    @ApiModelProperty()
+    @ApiProperty()
     @IsNotEmpty()
     email: string;
 
     @IsOptional()
-    @ApiModelPropertyOptional()
+    @ApiPropertyOptional()
     firstName?: string;
 
     @IsOptional()
-    @ApiModelPropertyOptional()
+    @ApiPropertyOptional()
     lastName?: string;
 
     @IsOptional()
-    @ApiModelPropertyOptional()
+    @ApiPropertyOptional()
     nick?: string;
 
     @IsOptional()
-    @ApiModelPropertyOptional()
+    @ApiPropertyOptional()
     avatarUrl?: string;
 }
-
