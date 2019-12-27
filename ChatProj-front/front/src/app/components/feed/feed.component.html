@@ -8,15 +8,11 @@
         <option value="Deluxe">Deluxe</option>
       </select>
     </mat-form-field>
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="join()">Join</button>
     </div>
-   <!-- <div class="col-sm">
-      <label for="roomInput">Choose Room</label>
-        <button type="button" class="btn" (click)="join()">Join</button> 
-    </div> -->
     <div class="chatBox" #scrollMe [scrollTop]="scrollMe.scrollHeight">
-      <div class="textChat" *ngFor="let item of message">
-        <!-- <span><strong>{{item.user}}: </strong> {{item.message}}</span> -->
-        <span>{{item}}</span>
+      <div class="textChat" *ngFor="let item of messageArray">
+         <span><strong>{{item.user}}: </strong> {{item.message}}</span>
       </div>
     </div>
     <form class="inputBox" [formGroup]="chatForm" (ngSubmit)="onSubmit(chatForm.value.chatBox)">
