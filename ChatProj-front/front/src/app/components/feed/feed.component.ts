@@ -19,12 +19,11 @@ export class FeedComponent implements OnInit {
   userLogged: UserLogged; /* ??????? */
   url: string;
   messageArray: Array<{ user: string, message: string }> = [];
+  message: Array<string> = []
 
-  // chatForm = new FormGroup({
-  //   chatBox: new FormControl('', [Validators.required])
-  // });
-
-  // public messages = [];
+    chatForm = new FormGroup({
+     chatBox: new FormControl('', [Validators.required])
+  });
 
 
   constructor(
@@ -45,9 +44,9 @@ export class FeedComponent implements OnInit {
     this._chatService.joinRoom({ user: 'unUsuario', room: this.room }); // this.user.nick
   }
 
-  // onSubmit(textChat) {
-  //   this.messages.push(textChat);
-  //   this.chatForm.reset();
-  // }
+   onSubmit(textChat) {
+     this.message.push(textChat);
+     this.chatForm.reset();
+   }
 
 }
