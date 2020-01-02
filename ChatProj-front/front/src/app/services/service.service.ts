@@ -16,7 +16,6 @@ export class UserService {
   // tslint:disable-next-line: variable-name
   constructor(private _http: HttpClient, private router: Router) {
     this.url = environment.serviceUrl;
-    // this.userLogged();
   }
 
   RegisterUser(user: User): Observable<any> {
@@ -44,15 +43,7 @@ export class UserService {
   }
 
   logout() {
-    localStorage.removeItem('currentToken');
+    localStorage.removeItem('token');
     this.router.navigateByUrl('/');
-  }
-
-  userLogged() {
-    if (this.router.url !== '/register') {
-      if (localStorage.getItem('currentToken') == null) {
-        this.router.navigateByUrl('/');
-      }
-    }
   }
 }

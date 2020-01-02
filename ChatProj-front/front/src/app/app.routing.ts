@@ -1,5 +1,6 @@
-import { Routes, RouterModule } from '@angular/router';
+import { Routes, RouterModule, CanActivate } from '@angular/router';
 import { NgModule } from '@angular/core';
+import { AuthGuardService as AuthService } from './services/auth-guard.service';
 
 
 const appRoutes: Routes = [
@@ -8,7 +9,7 @@ const appRoutes: Routes = [
       { path: 'register',
       loadChildren: () => import('./components/register/register.module').then(m => m.RegisterModule) },
       { path: 'feed',
-      loadChildren: () => import('./components/feed/feed.module').then(m => m.FeedModule) },
+      loadChildren: () => import('./components/feed/feed.module').then(m => m.FeedModule), canActivate: [AuthService] },
       {
         path: '',
         redirectTo: 'login',
@@ -17,9 +18,9 @@ const appRoutes: Routes = [
 ];
 
 @NgModule({
-  imports:[RouterModule.forRoot(appRoutes)],
-  exports:[RouterModule],
-  providers:[],
+  imports: [RouterModule.forRoot(appRoutes)],
+  exports: [RouterModule],
+  providers: [],
 })
 
 export class AppRoutingModule { }

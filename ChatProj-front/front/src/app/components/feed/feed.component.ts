@@ -6,12 +6,13 @@ import { UserService } from '../../services/service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChatService } from '../../../app/services/chat.service';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
-  providers: [UserService, ChatService]
+  providers: [UserService, ChatService, AuthService]
 })
 export class FeedComponent implements OnInit {
   room: string;
@@ -19,7 +20,7 @@ export class FeedComponent implements OnInit {
   userLogged: UserLogged; /* ??????? */
   url: string;
   messageArray: Array<{ user: string, message: string }> = [];
-  message: Array<string> = []
+  message: Array<string> = [];
 
     chatForm = new FormGroup({
      chatBox: new FormControl('', [Validators.required])
