@@ -40,9 +40,9 @@ export class UserService {
   login(username: string, password: string): Observable<any> {
     return this._http.post(this.url + '/user/login', { username, password });
   }
-  
+
  navigateTo(route){
-  this.router.navigate(route)
+  this.router.navigateByUrl(route)
  }
   
 }
