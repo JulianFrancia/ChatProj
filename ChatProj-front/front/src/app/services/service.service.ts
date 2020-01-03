@@ -10,7 +10,6 @@ import { environment } from '../../environments/environment';
 export class UserService {
   public user: User;
   public url: string;
-  public usserLogged: UserLogged;
 
 
   // tslint:disable-next-line: variable-name
@@ -41,9 +40,9 @@ export class UserService {
   login(username: string, password: string): Observable<any> {
     return this._http.post(this.url + '/user/login', { username, password });
   }
-
-  logout() {
-    localStorage.removeItem('token');
-    this.router.navigateByUrl('/');
-  }
+  
+ navigateTo(route){
+  this.router.navigate(route)
+ }
+  
 }

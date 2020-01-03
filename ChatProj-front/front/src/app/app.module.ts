@@ -12,14 +12,6 @@ import { JwtHelperService, JwtModule } from '@auth0/angular-jwt';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-/*
-const JWT_Module_Options: JwtModuleOptions = {
-    config: {
-        tokenGetter: yourTokenGetter,
-        whitelistedDomains: yourWhitelistedDomains
-    }
-};
-*/
 
 @NgModule({
   declarations: [

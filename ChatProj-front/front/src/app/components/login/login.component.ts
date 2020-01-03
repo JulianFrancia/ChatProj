@@ -33,10 +33,7 @@ export class LoginComponent implements OnInit {
       error => {
         console.error(error);
       },
-      () => this.navigate()
+      () => this._userService.navigateTo('/feed')
     );
-  }
-  navigate() {
-    this.router.navigateByUrl('/feed');
   }
 };
