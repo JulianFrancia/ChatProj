@@ -1,0 +1,16 @@
+{
+    "user": "Usuario",
+    "password": "Contraseña",
+    "confirm_password": "Confirmar contraseña",
+    "login": "Iniciar sesion",
+    "register": "Registro",
+    "email": "Correo electrónico",
+    "firstname": "Nombre",
+    "lastname": "Apellido",
+    "error_user": "Ingrese un usuario",
+    "error_password":"Ingresa una contrasenia mayor a 6 caracteres",
+    "not_match": "No coinciden",
+    "error_email": "Ingrese un correo electrónico",
+    "register_me": "Registrarme",
+    "error_nick": "Ingrese un nickname"
+}

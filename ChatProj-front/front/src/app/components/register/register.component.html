@@ -2,62 +2,62 @@
     <mat-card class="card">
       <!--TITTLE DEL REGISTRO-->
       <div>
-          <h1>Registro</h1>
+          <h1>{{'register' | translate}}</h1>
       </div>
       <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value.username, registerForm.value.password, registerForm.value.nickName, registerForm.value.firstName, registerForm.value.lastName, registerForm.value.email)">
       <!--USERNAME-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="Usuario" formControlName="username" required>
-          <mat-error *ngIf="registerForm.controls.username.invalid">Ingresa un usuario</mat-error>
+          <input matInput placeholder="{{'user'| translate}}" formControlName="username" required>
+          <mat-error *ngIf="registerForm.controls.username.invalid">{{'error_user' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <!--PASSWORD-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="Contrasenia" formControlName="password" required>
-          <mat-error *ngIf="registerForm.controls.password.invalid">Ingresa una contrasenia mayor a 6 caracteres</mat-error>
+          <input matInput placeholder="{{'password'| translate}}" formControlName="password" required>
+          <mat-error *ngIf="registerForm.controls.password.invalid">{{'error_password' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <!--CONFIRM PASSWORD-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="Confirmar contrasenia" formControlName="confirmPassword" [errorStateMatcher]="errorMatcher" required>
-          <mat-error *ngIf="registerForm.hasError('passwordsDoNotMatch')">Son diferentes</mat-error>
+          <input matInput placeholder="{{'confirm_password'| translate}}" formControlName="confirmPassword" [errorStateMatcher]="errorMatcher" required>
+          <mat-error *ngIf="registerForm.hasError('passwordsDoNotMatch')">{{'not_match' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <!--FIRSTNAME-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="Firstname" formControlName="firstName">
-          <mat-error *ngIf="registerForm.controls.firstName.invalid">Ingrese un firstName</mat-error>
+          <input matInput placeholder="{{'firstname'| translate}}" formControlName="firstName">
+          <!-- <mat-error *ngIf="registerForm.controls.firstName.invalid">Ingrese un firstName</mat-error> -->
         </mat-form-field>
       </div>
       <!--LASTNAME-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="Lastname" formControlName="lastName">
-          <mat-error *ngIf="registerForm.controls.lastName.invalid">Ingrese un lastName</mat-error>
+          <input matInput placeholder="{{'lastname'| translate}}" formControlName="lastName">
+          <!-- <mat-error *ngIf="registerForm.controls.lastName.invalid">Ingrese un lastName</mat-error> -->
         </mat-form-field>
       </div>
       <!--EMAIL-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="email" formControlName="email" required>
-          <mat-error *ngIf="registerForm.controls.email.invalid">Ingrese un email</mat-error>
+          <input matInput placeholder="{{'email'| translate}}" formControlName="email" required>
+          <mat-error *ngIf="registerForm.controls.email.invalid">{{'error_email' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <!--NICKNAME-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
           <input matInput placeholder="Nickname" formControlName="nickName" required>
-          <mat-error *ngIf="registerForm.controls.nickName.invalid">Ingrese un nickname</mat-error>
+          <mat-error *ngIf="registerForm.controls.nickName.invalid">{{'error_nick' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <div>
        <!-- <input *ngIf="" type="file" formControlName="image" (change)="processFile($event)"> -->
       </div>
-      <button mat-raised-button color="primary" type="submit">Registrarme</button>
+      <button mat-raised-button color="primary" type="submit">{{'register_me' | translate}}</button>
       </form>
   </mat-card>
   </div>

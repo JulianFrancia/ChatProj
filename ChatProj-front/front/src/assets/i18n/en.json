@@ -1,0 +1,16 @@
+{
+    "user": "User",
+    "password": "Password",
+    "confirm_password": "Confirm password",
+    "login": "Login",
+    "register": "Register",
+    "email": "Email",
+    "firstname": "Firstname",
+    "lastname": "Lastname",
+    "error_user": "Enter a user",
+    "error_password":"Enter a password greater than 6 characters",
+    "not_match": "Not match",
+    "error_email": "Enter a email",
+    "register_me": "Register me",
+    "error_nick": "Enter a nickname"
+}

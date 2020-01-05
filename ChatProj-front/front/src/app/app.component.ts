@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { UserService } from './services/service.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -7,6 +8,16 @@ import { UserService } from './services/service.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private userService: UserService) {
+
+  public activeLang = 'en';
+
+  constructor(private translate: TranslateService) {
+    this.translate.setDefaultLang(this.activeLang);
   }
+
+  public cambiarLenguaje(lang) {
+    this.activeLang = lang;
+    this.translate.use(lang);
+  }
+
 }
