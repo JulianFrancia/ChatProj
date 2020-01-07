@@ -9,6 +9,7 @@
       </select>
     </mat-form-field>
     <button mat-raised-button color="primary" type="button" class="btn" (click)="join()">Join</button>
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="logOut()">Logout</button>
     </div>
     <div class="chatBox" #scrollMe [scrollTop]="scrollMe.scrollHeight">
       <div class="textChat" *ngFor="let item of messageArray">

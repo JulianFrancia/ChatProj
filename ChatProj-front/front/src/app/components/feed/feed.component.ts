@@ -49,5 +49,10 @@ export class FeedComponent implements OnInit {
      this.message.push(textChat);
      this.chatForm.reset();
    }
+   
+   logOut(){
+     localStorage.removeItem('token');
+     this._userService.navigateTo('/login')
+   }
 
 }
