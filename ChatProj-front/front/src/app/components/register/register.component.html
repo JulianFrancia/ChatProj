@@ -4,7 +4,7 @@
       <div>
           <h1>{{'register' | translate}}</h1>
       </div>
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value.username, registerForm.value.password, registerForm.value.nickName, registerForm.value.firstName, registerForm.value.lastName, registerForm.value.email)">
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <!--USERNAME-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
@@ -15,14 +15,14 @@
       <!--PASSWORD-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="{{'password'| translate}}" formControlName="password" required>
+          <input matInput type = "password" placeholder="{{'password'| translate}}" formControlName="password" required>
           <mat-error *ngIf="registerForm.controls.password.invalid">{{'error_password' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <!--CONFIRM PASSWORD-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="{{'confirm_password'| translate}}" formControlName="confirmPassword" [errorStateMatcher]="errorMatcher" required>
+          <input matInput type = "password" placeholder="{{'confirm_password'| translate}}" formControlName="confirmPassword" [errorStateMatcher]="errorMatcher" required>
           <mat-error *ngIf="registerForm.hasError('passwordsDoNotMatch')">{{'not_match' | translate}}</mat-error>
         </mat-form-field>
       </div>
@@ -30,14 +30,12 @@
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
           <input matInput placeholder="{{'firstname'| translate}}" formControlName="firstName">
-          <!-- <mat-error *ngIf="registerForm.controls.firstName.invalid">Ingrese un firstName</mat-error> -->
         </mat-form-field>
       </div>
       <!--LASTNAME-->
       <div class="input-container">
         <mat-form-field id="username-input" color="primary">
           <input matInput placeholder="{{'lastname'| translate}}" formControlName="lastName">
-          <!-- <mat-error *ngIf="registerForm.controls.lastName.invalid">Ingrese un lastName</mat-error> -->
         </mat-form-field>
       </div>
       <!--EMAIL-->

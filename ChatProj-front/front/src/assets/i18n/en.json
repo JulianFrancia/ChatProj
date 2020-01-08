@@ -7,7 +7,7 @@
     "email": "Email",
     "firstname": "Firstname",
     "lastname": "Lastname",
-    "error_user": "Enter a user",
+    "error_user": "Enter a user greater than 6 characters",
     "error_password":"Enter a password greater than 6 characters",
     "not_match": "Not match",
     "error_email": "Enter a email",

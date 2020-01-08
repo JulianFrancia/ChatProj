@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../../models/user.model';
 import {ErrorStateMatcher} from '@angular/material';
-import { FormControl,  Validators,FormGroup, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
+import { FormControl,  Validators, FormGroup, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { UserService } from '../../services/service.service';
 
 
@@ -48,13 +48,13 @@ export class RegisterComponent {
 
   initForm() {
     this.registerForm = this.fb.group({
-      username : '',
-      password: '',
-      confirmPassword: '',
+      username : new FormControl('', [Validators.minLength(6)]),
+      password: new FormControl('', [Validators.minLength(6)]),
+      confirmPassword: new FormControl('', [Validators.minLength(6)]),
       firstName: '',
       lastName: '',
       email: new FormControl('', [Validators.pattern(this.emailPattern)]),
-      nickName: '',
+      nickName: new FormControl('', [Validators.minLength(4)]),
       image: '',
     }, {
       validator: this.passwordValidator
@@ -66,14 +66,14 @@ export class RegisterComponent {
     return condition ? { passwordsDoNotMatch: true} : null;
   }
 
-  onSubmit(user, password, nickName, firstName, lastName, email) {
+  onSubmit() {
       if (this.registerForm.valid) {
-        this.user.username = user;
-        this.user.password = password;
-        this.user.nick = nickName;
-        this.user.firstName = firstName;
-        this.user.lastName = lastName;
-        this.user.email = email;
+        this.user.username = this.registerForm.value.username;
+        this.user.password = this.registerForm.value.password;
+        this.user.firstName = this.registerForm.value.firstName;
+        this.user.lastName = this.registerForm.value.lastName;
+        this.user.email = this.registerForm.value.email;
+        this.user.nick = this.registerForm.value.nickName;
         this._userService.RegisterUser(this.user).subscribe(res => {
           console.log(res);
         },
