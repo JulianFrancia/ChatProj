@@ -5,11 +5,11 @@ import {
   Inject,
   forwardRef,
 } from '@nestjs/common';
-import { InjectModel } from '@nestjs/mongoose';
+import { InjectModel } from 'nestjs-typegoose';
 
 import { User } from './models/user.model';
 import { BaseService } from '../shared/base.service';
-import { ModelType } from 'typegoose';
+import { ReturnModelType } from '@typegoose/typegoose';
 import { MapperService } from '../shared/mapper/mapper.service';
 import { RegisterVm } from './models/view-models/register-vm.model';
 import { genSalt, hash, compare } from 'bcryptjs';
@@ -22,7 +22,7 @@ import { UserVm } from './models/view-models/user-vm.model';
 @Injectable()
 export class UserService extends BaseService<User> {
   constructor(
-    @InjectModel(User.modelName) private readonly userModel: ModelType<User>,
+    @InjectModel(User) private readonly userModel: ReturnModelType<typeof User>,
     private readonly mapperService: MapperService,
     @Inject(forwardRef(() => AuthService)) readonly authService: AuthService,
   ) {
@@ -34,7 +34,7 @@ export class UserService extends BaseService<User> {
   async register(registerVm: RegisterVm): Promise<User> {
     const { username, password, email, firstName, lastName, nick, avatarUrl } = registerVm;
 
-    const newUser = new this.model(); // InstanceType<User>
+    const newUser = new this.model(); // DocumentType<User>
     newUser.username = username;
     newUser.firstName = firstName;
     newUser.lastName = lastName;

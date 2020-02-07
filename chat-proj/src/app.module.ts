@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
-import { MongooseModule } from '@nestjs/mongoose';
+import { TypegooseModule } from 'nestjs-typegoose';
 import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
 import { HttpErrorFilter } from './shared/filters/http-error.filter';
 import { LoggingInterceptor } from './shared/interceptors/logging.interceptor';
@@ -15,10 +15,11 @@ import { AppGateway } from './app.gateway';
 @Module({
   imports: [
     UserModule,
-    MongooseModule.forRoot(ConfigurationService.connectionString, {
+    TypegooseModule.forRoot(ConfigurationService.connectionString, {
       useNewUrlParser: true,
       useFindAndModify: false,
       useCreateIndex: true,
+      useUnifiedTopology: true,
     }),
     SharedModule,
   ],

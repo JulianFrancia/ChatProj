@@ -1,6 +1,6 @@
-import { BaseModel, schemaOptions } from '../../shared/base.model';
+import { BaseModel } from '../../shared/base.model';
 import { UserRole } from './user-role.enum';
-import { prop, ModelType } from 'typegoose';
+import { prop, ReturnModelType, getModelForClass } from '@typegoose/typegoose';
 
 export class User extends BaseModel<User> {
     @prop({ required: [true, 'username is required'], minlength: [6, 'Must be at least 6 characters'], unique: true })
@@ -27,16 +27,23 @@ export class User extends BaseModel<User> {
     @prop()
     avatarUrl?: string;
 
-    @prop()
+    /* @prop cannot be applied to get & set (virtuals),
+        because virtuals do not accept options & schema.loadClass wouldnt load these
+     https://typegoose.github.io/typegoose/guides/known-issues/
+     */
+    // @prop()
     get fullName(): string {
         return `${this.firstName} ${this.lastName}`;
     }
 
-    static get model(): ModelType<User> {
-        return new User().getModelForClass(User, { schemaOptions });
+    static get model(): ReturnModelType<typeof User> {
+        // return new User().getModelForClass(User, { schemaOptions });
+        return getModelForClass(User);
     }
 
     static get modelName(): string {
-        return this.model.modelName;
+        /* BUG: https://github.com/typegoose/typegoose/issues/184 */
+        // return this.model.modelName;
+        return 'User';
     }
 }

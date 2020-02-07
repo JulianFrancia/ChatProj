@@ -1,12 +1,33 @@
-import { SchemaOptions } from 'mongoose';
 import { ApiPropertyOptional } from '@nestjs/swagger';
-import { Typegoose, prop, pre } from 'typegoose';
+import { prop, pre, modelOptions } from '@typegoose/typegoose';
 
-@pre('findOneAndUpdate', (next) => {
-    this.update.updatedAt = new Date(Date.now());
-    next();
+@modelOptions({
+    schemaOptions: {
+        toJSON: {
+            virtuals: true,
+            getters: true,
+        },
+        toObject: {
+            virtuals: true,
+            getters: true,
+        },
+    },
 })
-export class BaseModel<T> extends Typegoose {
+// @pre('findOneAndUpdate', function (this: mongoose.Query<BaseModel<any>>,next) {
+//     this.update.updatedAt = new Date(Date.now());
+//     next();
+// })
+/* https://github.com/szokodiakos/typegoose/issues/315 */
+// @pre<BaseModel<any>>('findOneAndUpdate', function (this: mongoose.Query<any>) {
+//     // @ts-ignore
+//     this._update.updatedAt = new Date(Date.now());
+//     return;
+// })
+// @pre('findOneAndUpdate', function (next) {
+//     this.update.updatedAt = new Date(Date.now());
+//     next();
+// })
+export class BaseModel<T> {
     @prop({ default: Date.now() })
     createdAt?: Date;
 
@@ -28,10 +49,3 @@ export class BaseModelVM {
     @ApiPropertyOptional()
     id?: string;
 }
-
-export const schemaOptions: SchemaOptions = {
-    toJSON: {
-        virtuals: true,
-        getters: true,
-    },
-};
