@@ -47,7 +47,7 @@ export class UserService extends BaseService<User> {
 
     try {
       const result = await this.create(newUser);
-      return result.toJSON() as User;
+      return result[0].toJSON() as User;
     } catch (e) {
       // Mongo Error
       throw new InternalServerErrorException(e);
