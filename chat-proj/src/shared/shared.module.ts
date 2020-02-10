@@ -7,6 +7,7 @@ import { LoggingInterceptor } from './interceptors/logging.interceptor';
 import { AuthService } from './auth/auth.service';
 import { JwtStrategyService } from './auth/strategies/jwt-strategy/jwt-strategy.service';
 import { UserModule } from '../user/user.module';
+import { MailService } from './services/mail.service';
 
 @Global()
 @Module({
@@ -19,6 +20,7 @@ import { UserModule } from '../user/user.module';
     LoggingInterceptor,
     AuthService,
     JwtStrategyService,
+    MailService,
   ],
   exports: [
     ConfigurationService,
@@ -27,6 +29,7 @@ import { UserModule } from '../user/user.module';
     ValidationPipe,
     LoggingInterceptor,
     AuthService,
+    MailService,
   ],
   imports: [UserModule],
 })
