@@ -3,4 +3,11 @@ export enum Configuration {
   PORT = 'PORT',
   MONGO_URI = 'MONGO_URI',
   JWT_KEY = 'JWT_KEY',
+  WEB_URL = 'WEB_URL',
+
+  EMAIL_HOST = 'EMAIL_HOST',
+  EMAIL_PORT = 'EMAIL_PORT',
+  EMAIL_TLS = 'EMAIL_TLS',
+  EMAIL_USER = 'EMAIL_USER',
+  EMAIL_PASSWORD = 'EMAIL_PASSWORD',
 }

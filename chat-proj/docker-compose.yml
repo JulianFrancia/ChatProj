@@ -22,6 +22,8 @@ services:
       - PORT=3006
       - JWT_KEY=lfjf
 
+      - WEB_URL=http://www.example.com/
+
       - VIRTUAL_HOST=chat-projapi.com
       - VIRTUAL_PORT=80
       - DATABASE=chatProj
@@ -29,6 +31,12 @@ services:
       - NODE_ENV=development
       - CORS_URLS=http://localhost:4200
       - CORS_METHODS=OPTIONS,GET,HEAD,PUT,PATCH,POST,DELETE
+
+      - EMAIL_HOST=smtp.gmail.com
+      - EMAIL_PORT=587
+      - EMAIL_TLS=true
+      - EMAIL_USER=chatprojdev@gmail.com
+      - EMAIL_PASSWORD=ChatProjectD3v
 
 networks:
   default:
