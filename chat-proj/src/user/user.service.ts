@@ -141,7 +141,7 @@ export class UserService extends BaseService<User> {
 
     try {
       const result = await this.update(user.id, { password: passwordHashed });
-      return this.map<UserVm>(result.toJSON() as User);
+      return result;
     } catch (e) {
       // Mongo Error or Parse Error
       throw new InternalServerErrorException(e);

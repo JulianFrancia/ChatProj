@@ -207,7 +207,24 @@ export class UserController {
         /* AGREGAR TOKEN A LA BLACKLIST (? */
 
         const result = await this.userService.changeUserPassword(payload.username, bdy.password);
-        return res.send(result);
+        res.send(this.userService.map<UserVm>(result.toJSON() as User));
+
+        try {
+            const infoEmail = new EmailDTO();
+            infoEmail.to = result.email;
+            infoEmail.subject = 'Cambio de Contraseña';
+            infoEmail.body = new EmailBodyDTO();
+            infoEmail.body.template = 'reset-password-succesfully.template.html';
+            infoEmail.body.data = { NOMBRE: result.firstName };
+
+            this.emailService.sendTemplateEmail(infoEmail);
+        } catch (err) {
+            this.logger.error(err);
+            throw new InternalServerErrorException(err);
+        }
+
+        return;
+
     }
 
     @UseGuards(AuthGuard('jwt'))
