@@ -37,6 +37,14 @@ services:
       - EMAIL_TLS=true
       - EMAIL_USER=chatprojdev@gmail.com
       - EMAIL_PASSWORD=ChatProjectD3v
+    resources:
+      limits:
+        cpus: '1'
+        memory: 1G
+      reservations:
+        cpus: '0.3'
+        memory: 500M
+    
 
 networks:
   default:
