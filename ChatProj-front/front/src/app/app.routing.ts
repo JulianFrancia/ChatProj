@@ -10,6 +10,8 @@ const appRoutes: Routes = [
       loadChildren: () => import('./components/register/register.module').then(m => m.RegisterModule) },
       { path: 'feed',
       loadChildren: () => import('./components/feed/feed.module').then(m => m.FeedModule), canActivate: [AuthService] },
+      { path: 'forgot-password',
+      loadChildren: () => import('./components/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule) },
       {
         path: '',
         redirectTo: 'login',

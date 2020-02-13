@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoginComponent } from './login.component';
-import { LoginRoutingModule } from './login-routing.module';
+import { ForgotPasswordComponent } from './forgot-password.component';
+import { ForgotPasswordRoutingModule } from './forgot-password-routing.module';
 
 // ANGULAR MATERIAL
 import { FormsModule } from '@angular/forms';
@@ -12,10 +12,10 @@ import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 
 @NgModule({
-  declarations: [LoginComponent],
+  declarations: [ForgotPasswordComponent],
   imports: [
     CommonModule,
-    LoginRoutingModule,
+    ForgotPasswordRoutingModule,
     ReactiveFormsModule,
     FormsModule,
     MatFormFieldModule,
@@ -24,4 +24,4 @@ import {MatButtonModule} from '@angular/material/button';
     MatButtonModule
   ]
 })
-export class LoginModule { }
+export class ForgotPasswordModule { }
