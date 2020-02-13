@@ -17,7 +17,7 @@ export class JwtStrategyService extends PassportStrategy(Strategy) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
             // secretOrKey: configurationService.get(Configuration.JWT_KEY),
-            secretOrKey: fs.readFileSync(path.join(__dirname, '../../../../../resources/keys/um-public.key'), 'utf-8'),
+            secretOrKey: fs.readFileSync(path.join(__dirname, '../../../../../resources/keys/public.key'), 'utf-8'),
         });
     }
 
