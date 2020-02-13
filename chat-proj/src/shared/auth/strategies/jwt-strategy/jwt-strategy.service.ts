@@ -1,10 +1,12 @@
-import { Injectable, UnauthorizedException, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { AuthService } from '../../auth.service';
 import { ConfigurationService } from '../../../../shared/configuration/configuration.service';
 import { ExtractJwt, VerifiedCallback, Strategy } from 'passport-jwt';
 import { Configuration } from '../../../../shared/configuration/configuration.enum';
 import { JwtPayload } from '../../jwt-payload';
+import * as fs from 'fs';
+import * as path from 'path';
 
 @Injectable()
 export class JwtStrategyService extends PassportStrategy(Strategy) {
@@ -14,7 +16,8 @@ export class JwtStrategyService extends PassportStrategy(Strategy) {
     ) {
         super({
             jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-            secretOrKey: configurationService.get(Configuration.JWT_KEY),
+            // secretOrKey: configurationService.get(Configuration.JWT_KEY),
+            secretOrKey: fs.readFileSync(path.join(__dirname, '../../../../../resources/keys/um-public.key'), 'utf-8'),
         });
     }
 
