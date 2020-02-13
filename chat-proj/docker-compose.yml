@@ -3,7 +3,7 @@
 # Cambiar las credenciales para la base de datos de mongo correspondiente
 # El puerto interno del contenedor debe ser igual al externo para evitar fallos por CORS en el Swagger
 
-version: '3.7'
+version: '3.5'
 
 services:
   chat-proj-api:
