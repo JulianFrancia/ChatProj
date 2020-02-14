@@ -9,6 +9,7 @@
       </select>
     </mat-form-field>
     <button mat-raised-button color="primary" type="button" class="btn" (click)="join()">Join</button>
+    <button mat-raised-button color="primary" type="button" class="btn" (click)="leave()">Leave</button>
     <button mat-raised-button color="primary" type="button" class="btn" (click)="logOut()">Logout</button>
     </div>
     <div class="chatBox" #scrollMe [scrollTop]="scrollMe.scrollHeight">
@@ -20,4 +21,7 @@
       <textarea class="inputChat" formControlName="chatBox"></textarea>
       <button mat-raised-button color="accent" class="sendButton" type="submit">Enviar</button>
     </form>
+      <!-- <textarea class="inputChat" [(ngModel)]="message"></textarea> -->
+      <!-- <input type="text" class="inputChat" [(ngModel)]="message"/>
+      <button mat-raised-button color="accent" class="sendButton" (click)="sendMessage()">Enviar</button> -->
 </div>

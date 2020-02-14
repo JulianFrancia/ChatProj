@@ -25,7 +25,37 @@ export class ChatService {
       this.socket.on('new user joined', (data) => {
         observer.next(data);
       });
-      return () => { this.socket.disconnect(); }
+      return () => { this.socket.disconnect(); };
+    });
+
+    return observable;
+  }
+
+  public leaveRoom(data) {
+    this.socket.emit('leave', data);
+  }
+
+  userLeftRoom() {
+    const observable = new Observable<{ user: string, message: string }>(observer => {
+      this.socket.on('left room', (data) => {
+        observer.next(data);
+      });
+      return () => { this.socket.disconnect(); };
+    });
+
+    return observable;
+  }
+
+  public sendMessage(data) {
+    this.socket.emit('msgToServer', data);
+  }
+
+  newMessageReceived() {
+    const observable = new Observable<{ user: string, message: string }>(observer => {
+      this.socket.on('new message', (data) => {
+        observer.next(data);
+      });
+      return () => { this.socket.disconnect(); };
     });
 
     return observable;

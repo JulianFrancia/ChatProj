@@ -20,11 +20,11 @@ export class FeedComponent implements OnInit {
   userLogged: UserLogged; /* ??????? */
   url: string;
   messageArray: Array<{ user: string, message: string }> = [];
-  message: Array<string> = [];
+  message: string;
 
-    chatForm = new FormGroup({
-     chatBox: new FormControl('', [Validators.required])
-  });
+  chatForm = new FormGroup({
+    chatBox: new FormControl('', [Validators.required])
+});
 
 
   constructor(
@@ -33,26 +33,41 @@ export class FeedComponent implements OnInit {
     private _route: ActivatedRoute,
     private readonly _chatService: ChatService,
   ) {
-    // this.user = this._userService.();
+    this.user = JSON.parse(localStorage.getItem('user'));
+
     this._chatService.newUserJoined()
       .subscribe(data => this.messageArray.push(data));
+
+    this._chatService.userLeftRoom()
+      .subscribe(data => this.messageArray.push(data));
+
+    this._chatService.newMessageReceived()
+    .subscribe(data => this.messageArray.push(data));
   }
 
   ngOnInit() {
   }
 
   join() {
-    this._chatService.joinRoom({ user: 'unUsuario', room: this.room }); // this.user.nick
+    this._chatService.joinRoom({ user: this.user.nick, room: this.room });
   }
 
-   onSubmit(textChat) {
-     this.message.push(textChat);
-     this.chatForm.reset();
+  leave() {
+    this._chatService.leaveRoom({ user: this.user.nick, room: this.room });
+  }
+
+  //  sendMessage() {
+  //   this._chatService.sendMessage({ user: this.user.nick, room: this.room, text: this.message });
+  //  }
+   onSubmit(textMsg: string) {
+    //  this.message.push(textChat);
+    this._chatService.sendMessage({ user: this.user.nick, room: this.room, text: textMsg });
+    this.chatForm.reset();
    }
-   
-   logOut(){
+
+   logOut() {
      localStorage.removeItem('token');
-     this._userService.navigateTo('/login')
+     this._userService.navigateTo('/login');
    }
 
 }

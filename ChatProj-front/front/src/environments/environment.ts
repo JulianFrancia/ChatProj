@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   serviceUrl: 'http://34.69.232.230:3006',
+  // serviceUrl: 'http://localhost:8080',
   timeout: 4000,
   retry: 2
 };
