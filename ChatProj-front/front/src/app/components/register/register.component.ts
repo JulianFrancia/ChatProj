@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../../models/user.model';
-import {ErrorStateMatcher} from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material';
 import { FormControl,  Validators, FormGroup, FormGroupDirective, NgForm, FormBuilder } from '@angular/forms';
 import { UserService } from '../../services/service.service';
 
