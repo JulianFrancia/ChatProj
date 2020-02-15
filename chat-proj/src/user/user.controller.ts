@@ -15,6 +15,7 @@ import {
     UseGuards,
     Headers,
     Put,
+    Req,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { ApiTags, ApiResponse, ApiOperation } from '@nestjs/swagger';
@@ -179,15 +180,13 @@ export class UserController {
     @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: ApiException })
     @ApiOperation(GetOperationId(User.modelName, 'ResetPasswordValidation'))
     async resetPasswordValidation(
+        @Req() req,
         @Res() res,
         @Headers('authorization') bearerToken,
     ) {
-        const token = bearerToken.split(' ')[1];
-        const payload = await this.authService.extractPayloadFromToken(token);
-
         /* AGREGAR TOKEN A LA BLACKLIST (? */
-
-        const tokenForResetPwd = await this.userService.generateTokenForPwdReset(payload.username);
+        const user = req.user;
+        const tokenForResetPwd = await this.userService.generateTokenForPwdReset(user.username);
         return res.send(tokenForResetPwd.token);
     }
 
@@ -197,16 +196,14 @@ export class UserController {
     @ApiResponse({ status: HttpStatus.BAD_REQUEST, type: ApiException })
     @ApiOperation(GetOperationId(User.modelName, 'ResetPassword'))
     async resetPassword(
+        @Req() req,
         @Res() res,
         @Headers('authorization') bearerToken,
         @Body() bdy,
     ): Promise<UserVm> {
-        const token = bearerToken.split(' ')[1];
-        const payload = await this.authService.extractPayloadFromToken(token);
-
         /* AGREGAR TOKEN A LA BLACKLIST (? */
-
-        const result = await this.userService.changeUserPassword(payload.username, bdy.password);
+        const user = req.user;
+        const result = await this.userService.changeUserPassword(user.username, bdy.password);
         res.send(this.userService.map<UserVm>(result.toJSON() as User));
 
         try {
