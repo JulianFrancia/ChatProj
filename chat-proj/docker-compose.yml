@@ -23,7 +23,7 @@ services:
       # - JWT_KEY=lfjf
       - JWT_EXP_TIME=6h
 
-      - WEB_URL=http://www.example.com/
+      - WEB_URL=http://localhost:4200
 
       - VIRTUAL_HOST=chat-projapi.com
       - VIRTUAL_PORT=80

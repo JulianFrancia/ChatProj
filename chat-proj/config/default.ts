@@ -5,7 +5,7 @@ export default {
   MONGO_URI: 'mongodb://34.69.232.230:27017,34.69.232.230:27018,34.69.232.230:27019/ChatProj?replicaSet=rs0',
   // JWT_KEY: 'lfjf',
   JWT_EXP_TIME: '6h',
-  WEB_URL: 'http://www.example.com/',
+  WEB_URL: 'http://localhost:4200',
 
   EMAIL_HOST: 'smtp.gmail.com',
   EMAIL_PORT: '587',

@@ -48,8 +48,8 @@ export class AuthService {
         return this.userService.findOne({ username: payload.username.toLowerCase() });
     }
 
-    async extractPayloadFromToken(token: string): Promise<JwtPayload> {
-        const payload = verify(token, this.jwtPublicKey, { ignoreExpiration: true });
-        return JSON.parse(JSON.stringify(payload));
-    }
+    // async extractPayloadFromToken(token: string): Promise<JwtPayload> {
+    //     const payload = verify(token, this.jwtPublicKey, { ignoreExpiration: true });
+    //     return JSON.parse(JSON.stringify(payload));
+    // }
 }

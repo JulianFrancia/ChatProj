@@ -1,6 +1,6 @@
 import { BaseModel } from '../../shared/base.model';
 import { UserRole } from './user-role.enum';
-import { prop, ReturnModelType, getModelForClass } from '@typegoose/typegoose';
+import { prop, ReturnModelType, getModelForClass, arrayProp } from '@typegoose/typegoose';
 
 export class User extends BaseModel<User> {
     @prop({ required: [true, 'username is required'], minlength: [6, 'Must be at least 6 characters'], unique: true })
@@ -17,6 +17,12 @@ export class User extends BaseModel<User> {
 
     @prop({ enum: UserRole, default: UserRole.User })
     role?: UserRole;
+    // @arrayProp({ enum: UserRole, default: [UserRole.User] })
+    // roles?: UserRole[];
+    // @arrayProp({ items: {enum: UserRole}, default: [UserRole.User] })
+    // roles?: UserRole[];
+    // @arrayProp({ items: {type: String}, default: [] })
+    // roles?: string[];
 
     @prop()
     firstName?: string;
