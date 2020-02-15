@@ -73,7 +73,7 @@ export class UserService extends BaseService<User> {
 
     const payload: JwtPayload = {
       username: user.username,
-      roles: user.roles,
+      role: user.role,
     };
 
     const token = await this.authService.signPayload(payload);
@@ -109,7 +109,7 @@ export class UserService extends BaseService<User> {
 
     const payload: JwtPayload = {
       username: user.username,
-      roles: user.roles,
+      role: user.role,
     };
     const token = await this.authService.signPayload(payload, expiresIn ? { expiresIn } : null);
 
