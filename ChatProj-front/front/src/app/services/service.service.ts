@@ -41,6 +41,11 @@ export class UserService {
     return this._http.post(this.url + '/user/login', { username, password });
   }
 
+  forgotPwd(user): Observable<any> {
+    const headers = new HttpHeaders().set('Content-type', 'application/json');
+    return this._http.post(this.url+'/user/forgotPwd', { user }, { headers })
+  }
+
  navigateTo(route){
   this.router.navigateByUrl(route)
  }

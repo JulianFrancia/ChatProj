@@ -15,17 +15,22 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComponent } from './components/dialog/dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
     JwtModule.forRoot({
@@ -39,10 +44,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
         useFactory: (createTranslateLoader),
         deps: [ HttpClient ]
       }
-    })
+    }),
+    MatDialogModule
   ],
   providers: [UserService, AuthService, AuthGuardService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    DialogComponent
+  ]
 })
 export class AppModule { }
 
