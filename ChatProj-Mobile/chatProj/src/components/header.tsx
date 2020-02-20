@@ -6,7 +6,7 @@ const Header: React.FC = (props) => {
     return (
         <View style={header.container}>
             <Text style={header.instructions}>
-                NOMBRE PIOLA DE LA APP
+                CHAT PROJECT
             </Text>
         </View>
     );

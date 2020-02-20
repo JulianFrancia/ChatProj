@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import GradientButton from 'react-native-gradient-buttons';
 import { Text, TextInput, View } from 'react-native';
 import { body } from '../styles/styles';
 
 
-const Login: React.FC = (props) => {
+const Login = (props: any) => {
+
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
     
     
     return (
         <View style={body.container}>
-            <TextInput placeholder='User*' placeholderTextColor='white'  style={body.input}/>
-            <TextInput placeholder='Pasword*' placeholderTextColor='white' style={body.input}/>
+            <TextInput placeholder='User*' placeholderTextColor='white' onChangeText={setUsername} style={body.input} autoCompleteType='username'/>
+            <TextInput placeholder='Pasword*' placeholderTextColor='white' onChangeText={setPassword} secureTextEntry={true} style={body.input} autoCompleteType='password'/>
             <Text style={body.forgot}>Forgot your password?</Text>
             
             <View style={body.button}>
@@ -26,7 +29,7 @@ const Login: React.FC = (props) => {
                 radius={75}
                 impact
                 impactStyle='Light'
-                onPressAction={() => alert('You pressed me!')}
+                onPressAction={() => props.login({username, password})}
     />
             </View>
 
