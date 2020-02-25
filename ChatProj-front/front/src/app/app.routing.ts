@@ -13,7 +13,9 @@ const appRoutes: Routes = [
       { path: 'forgot-password',
       loadChildren: () => import('./components/forgot-password/forgot-password.module').then(m => m.ForgotPasswordModule) },
       { path: 'resetpwd',
-      loadChildren: () => import('./components/reset-pwd/reset-pwd.module').then(m => m.ResetPwdModule) },
+      loadChildren: () => import('./components/reset-pwd/reset-pwd.module').then(m => m.ResetPwdModule)
+    } ,
+
       {
         path: '',
         redirectTo: 'login',

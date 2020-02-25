@@ -1,1 +1,24 @@
-<p>reset-pwd works!</p>
+<div class="wrap">
+    <div class="second-wrap">
+        <mat-card> 
+            <div class="mat-div">
+                <span>nombre o logo</span>
+                <h2>Recuperacion de la contraseña</h2>
+                <p>Ingrese su nueva contraseña</p>
+                    <form class="email-form">
+                        <mat-form-field class="email-full-width">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput [formControl]="passFormControl">
+                        <mat-error *ngIf="passFormControl.hasError('pass') && !passFormControl.hasError('required')">
+                            Please enter a valid pass address
+                        </mat-error>
+                        <mat-error *ngIf="passFormControl.hasError('required')">
+                            pass is <strong>required</strong>
+                        </mat-error>
+                        </mat-form-field>
+                        <button mat-raised-button color="primary" (click)="onSubmit()">Enviar</button>
+                    </form>
+            </div>
+        </mat-card>
+    </div>
+</div>

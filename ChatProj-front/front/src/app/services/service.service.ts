@@ -46,6 +46,18 @@ export class UserService {
     return this._http.post(this.url+'/user/forgotPwd', { user }, { headers })
   }
 
+  resetPwdValidation(token): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
+    headers.append('Content-type', 'application/json');
+    return this._http.get(this.url+'/user/resetPwdValidation', { headers })
+  }
+
+  resetPwd(token, password):Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', 'Bearer '+token);
+    headers.append('Content-type', 'application/json');
+    return this._http.post(this.url+'/user/resetPwd', { password }, { headers });
+  }
+
  navigateTo(route){
   this.router.navigateByUrl(route)
  }
