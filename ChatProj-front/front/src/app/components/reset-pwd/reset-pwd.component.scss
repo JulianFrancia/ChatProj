@@ -43,3 +43,11 @@
   .email-full-width {
     width: 100%;
   }
+
+  .loading{
+      display: grid;
+      width: 100%;
+      height: 200px;
+      justify-self: center;
+      align-self: center;
+  }

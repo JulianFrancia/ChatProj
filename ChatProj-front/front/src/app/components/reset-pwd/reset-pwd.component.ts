@@ -10,7 +10,8 @@ import { filter } from 'rxjs/operators';
   styleUrls: ['./reset-pwd.component.scss']
 })
 export class ResetPwdComponent implements OnInit {
-  resetToken: '';
+  public resetToken: '';
+  public loading: boolean = true;
 
   passFormControl = new FormControl('', [
     Validators.required,
@@ -36,9 +37,10 @@ export class ResetPwdComponent implements OnInit {
     }, 
     err => {
       if(err.status === 401){
-        this._service.navigateTo('/login')
+        this._service.navigateTo('/login');
       } else {
         this.mainToken = err.error.text;
+        this.loading = false;
       }
     })
   }  
