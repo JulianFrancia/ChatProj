@@ -7,12 +7,24 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ChatService } from '../../../app/services/chat.service';
 import { AuthService } from '../../services/auth.service';
+import { trigger, animate, state, style, transition } from '@angular/animations';
 
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
-  providers: [UserService, ChatService, AuthService]
+  providers: [UserService, ChatService, AuthService],
+  animations:[
+    trigger('animate', [
+      state('open', style({
+        opacity: 0
+      })),
+      state('close', style({
+        opacity: 1
+      })),
+      transition('open => close', [animate('2s')])
+    ])
+  ]
 })
 export class FeedComponent implements OnInit {
   room: string;
@@ -21,6 +33,7 @@ export class FeedComponent implements OnInit {
   url: string;
   messageArray: Array<{ user: string, message: string }> = [];
   message: string;
+  public animate: string = 'open';
 
   chatForm = new FormGroup({
     chatBox: new FormControl('', [Validators.required])
@@ -46,6 +59,9 @@ export class FeedComponent implements OnInit {
   }
 
   ngOnInit() {
+    setTimeout( () => {
+      this.animate = 'close';
+    }, 400)
   }
 
   join() {

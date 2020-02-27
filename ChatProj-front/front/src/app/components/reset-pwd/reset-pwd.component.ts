@@ -21,11 +21,11 @@ export class ResetPwdComponent implements OnInit {
   public mainToken= '';
 
   constructor(private _service: UserService, private route: ActivatedRoute) { 
-    this.getToken();
+    
   }
 
   ngOnInit() {
-    
+    this.getToken();
   }
   
 
