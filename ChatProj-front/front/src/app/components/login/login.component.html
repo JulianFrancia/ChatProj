@@ -1,28 +1,27 @@
 <div class="main-container">
     <mat-card class="card">
     <!--TITTLE DEL LOGIN-->
-    <h1>Login</h1>
+    <h1>nombre de la app</h1>
     <form [formGroup]="loginForm" class="Login-form" (ngSubmit)=" onSubmit(loginForm.value.username, loginForm.value.password)">
       <!--USERNAME-->
       <div class="input-container">
-        <mat-form-field id="username-input" color="primary">
-          <input matInput placeholder="Usuario" formControlName="username" required>
-          <mat-error *ngIf="loginForm.controls.username.invalid">Ingresa un usuario</mat-error>
+        <mat-form-field id="username-input">
+          <input class="campo" matInput placeholder="{{'user' | translate}}" formControlName="username" required>
+          <mat-error *ngIf="loginForm.controls.username.invalid">{{'enter_username' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <!--PASSWORD-->
       <div class="input-container">
-        <mat-form-field id="password-input" color="primary">
-          <input matInput type="password" placeholder="Contraseña" formControlName="password" required>
-          <mat-error *ngIf="loginForm.controls.password.invalid">Ingresa una contraseña</mat-error>
+        <mat-form-field id="password-input">
+          <input class="campo" matInput type="password" placeholder="{{'password' | translate}}" formControlName="password" required>
+          <mat-error *ngIf="loginForm.controls.password.invalid">{{'enter_password' | translate}}</mat-error>
         </mat-form-field>
       </div>
       <div>
         <ul class="list">
-          <li><button class="login-button" mat-raised-button color="warn" type="submit" value="Iniciar sesion"  [disabled]="">Login</button></li>
-          <li><button  mat-raised-button color="primary"><a href="#" id="forgot-link">Olvide mi contraseña</a></button></li>
-          <li>¿No tenes cuenta? <button mat-raised-button color="accent"><a [routerLink]='["/register"]' id="register-button">Hacela
-              acá</a></button></li>
+          <li><a href="#" id="forgot-link">{{'forgot_password' | translate}}</a></li>
+          <li><button class="login-button" mat-raised-button color="warn" type="submit" value="Iniciar sesion"  [disabled]="">{{'login' | translate}}</button></li>
+          <li>{{'no_account' | translate}}<a [routerLink]='["/register"]' id="register-link">{{'sign_up' | translate}}</a></li>
         </ul>
       </div>
     </form>

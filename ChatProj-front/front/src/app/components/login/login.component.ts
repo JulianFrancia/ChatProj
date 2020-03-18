@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl,  FormGroup, Validators } from '@angular/forms';
 import { UserService } from '../../services/service.service';
 import { Router } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
@@ -17,8 +18,9 @@ export class LoginComponent implements OnInit {
   });
 
 
-  constructor(private _userService: UserService, private router: Router) {
+  constructor(private _userService: UserService, private router: Router, private translate:TranslateService) {
     this.stateLogin = false;
+    this.translate.setDefaultLang('en')
   }
 
   ngOnInit() {}

@@ -12,5 +12,10 @@
     "not_match": "No coinciden",
     "error_email": "Ingrese un correo electrónico",
     "register_me": "Registrarme",
-    "error_nick": "Ingrese un nickname"
+    "error_nick": "Ingrese un nickname",
+    "enter_username": "Ingrese un usuario",
+    "enter_password": "Ingrese una contraseña",
+    "forgot_password": "¿Olvidaste tu contraseña?",
+    "no_account": "¿No tenes una cuenta?",
+    "sign_up": "Hacela acá"
 }

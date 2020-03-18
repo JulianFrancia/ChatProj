@@ -12,5 +12,11 @@
     "not_match": "Not match",
     "error_email": "Enter a email",
     "register_me": "Register me",
-    "error_nick": "Enter a nickname"
+    "error_nick": "Enter a nickname",
+    "enter_username": "Enter a username",
+    "enter_password": "Enter a password",
+    "forgot_password": "Forgot password?",
+    "no_account": "Don't have an account?",
+    "sign_up": "Sign up"
+
 }
