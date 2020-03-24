@@ -1,7 +1,6 @@
 // tslint:disable: variable-name
 import { Component, OnInit } from '@angular/core';
 import { User } from '../../models/user.model';
-import { UserLogged } from '../../models/user.model';
 import { UserService } from '../../services/service.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
@@ -14,7 +13,7 @@ import { trigger, animate, state, style, transition } from '@angular/animations'
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
   providers: [UserService, ChatService, AuthService],
-  animations:[
+  animations: [
     trigger('animate', [
       state('open', style({
         opacity: 0
@@ -29,15 +28,13 @@ import { trigger, animate, state, style, transition } from '@angular/animations'
 export class FeedComponent implements OnInit {
   room: string;
   user: User;
-  userLogged: UserLogged; /* ??????? */
   url: string;
   messageArray: Array<{ user: string, message: string }> = [];
-  message: string;
-  public animate: string = 'open';
+  public animate = 'open';
 
   chatForm = new FormGroup({
     chatBox: new FormControl('', [Validators.required])
-});
+  });
 
 
   constructor(
@@ -55,13 +52,13 @@ export class FeedComponent implements OnInit {
       .subscribe(data => this.messageArray.push(data));
 
     this._chatService.newMessageReceived()
-    .subscribe(data => this.messageArray.push(data));
+      .subscribe(data => this.messageArray.push(data));
   }
 
   ngOnInit() {
-    setTimeout( () => {
+    setTimeout(() => {
       this.animate = 'close';
-    }, 400)
+    }, 400);
   }
 
   join() {
@@ -75,15 +72,15 @@ export class FeedComponent implements OnInit {
   //  sendMessage() {
   //   this._chatService.sendMessage({ user: this.user.nick, room: this.room, text: this.message });
   //  }
-   onSubmit(textMsg: string) {
-    //  this.message.push(textChat);
+  onSubmit(textMsg: string) {
+    this.messageArray.push({ user: this.user.nick, message: textMsg });
     this._chatService.sendMessage({ user: this.user.nick, room: this.room, text: textMsg });
     this.chatForm.reset();
-   }
+  }
 
-   logOut() {
-     localStorage.removeItem('token');
-     this._userService.navigateTo('/login');
-   }
+  logOut() {
+    localStorage.removeItem('token');
+    this._userService.navigateTo('/login');
+  }
 
 }

@@ -3,7 +3,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { User } from '../models/user.model';
-import { UserLogged } from '../models/user.model';
 import { environment } from '../../environments/environment';
 
 @Injectable()
@@ -43,23 +42,23 @@ export class UserService {
 
   forgotPwd(user): Observable<any> {
     const headers = new HttpHeaders().set('Content-type', 'application/json');
-    return this._http.post(this.url+'/user/forgotPwd', { user }, { headers })
+    return this._http.post(this.url + '/user/forgotPwd', { user }, { headers })
   }
 
   resetPwdValidation(token): Observable<any> {
     let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     headers.append('Content-type', 'application/json');
-    return this._http.get(this.url+'/user/resetPwdValidation', { headers })
+    return this._http.get(this.url + '/user/resetPwdValidation', { headers })
   }
 
-  resetPwd(token, password):Observable<any> {
-    let headers = new HttpHeaders().set('Authorization', 'Bearer '+token);
+  resetPwd(token, password): Observable<any> {
+    let headers = new HttpHeaders().set('Authorization', 'Bearer ' + token);
     headers.append('Content-type', 'application/json');
-    return this._http.post(this.url+'/user/resetPwd', { password }, { headers });
+    return this._http.post(this.url + '/user/resetPwd', { password }, { headers });
   }
 
- navigateTo(route){
-  this.router.navigateByUrl(route)
- }
-  
+  navigateTo(route) {
+    this.router.navigateByUrl(route)
+  }
+
 }
