@@ -1,54 +1,69 @@
-.main-container{
+.main-container {
     width: 100%;
     display: grid;
     grid-template-rows: 1fr 6fr 1fr;
     grid-row-gap: 20px;
 }
-.choose-room{
+
+.choose-room {
     grid-row-start: 1;
 }
-.btn{
+
+.btn {
     margin-left: 3%;
 }
-.chatBox{
+
+.chatBox {
     width: 30%;
     max-height: 390px;
     overflow: hidden;
     overflow-y: scroll;
     border: 1px solid black;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     grid-row-start: 2;
     justify-self: center;
 }
-.textChat{
+
+.textChat {
     margin: 20px;
-    padding:5px;
+    padding: 5px;
     word-wrap: break-word;
 }
-.inputBox{
+
+.inputBox {
     width: 100%;
     grid-row-start: 3;
     display: grid;
     grid-template-columns: 1.5fr 1fr;
     grid-column-gap: 11px;
 }
-.inputChat{
+
+.inputChat {
     width: 40%;
-    background: rgba(255,255,255,0.2);
+    background: rgba(255, 255, 255, 0.2);
     resize: none;
     justify-self: end;
 }
-.sendButton{
+
+.sendButton {
     width: 10%;
     height: 60%;
     align-self: end;
 }
+
+.userMessage {
+    color: #9686F3;
+    float: right;
+}
+
 ::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.4);
-  }
-  ::-webkit-scrollbar {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+::-webkit-scrollbar {
     width: 5px;
-  }
-  ::-webkit-scrollbar-thumb:hover {
+}
+
+::-webkit-scrollbar-thumb:hover {
     background: red;
-  }
+}
