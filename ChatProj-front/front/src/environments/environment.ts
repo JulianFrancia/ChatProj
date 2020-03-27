@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  serviceUrl: 'http://34.69.232.230:3006',
+  userManagerApiUrl: 'http://34.69.232.230:3006',
+  chatSocketApiUrl: 'http://34.69.232.230:3007',
   // serviceUrl: 'http://localhost:8080',
   timeout: 4000,
   retry: 2

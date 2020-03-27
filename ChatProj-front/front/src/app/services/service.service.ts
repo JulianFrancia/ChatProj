@@ -13,7 +13,7 @@ export class UserService {
 
   // tslint:disable-next-line: variable-name
   constructor(private _http: HttpClient, private router: Router) {
-    this.url = environment.serviceUrl;
+    this.url = environment.userManagerApiUrl;
   }
 
   RegisterUser(user: User): Observable<any> {

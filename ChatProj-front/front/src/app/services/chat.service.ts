@@ -12,7 +12,7 @@ export class ChatService {
   private socket: any;
 
   constructor() {
-    this.baseUrl = environment.serviceUrl;
+    this.baseUrl = environment.chatSocketApiUrl;
     this.socket = io(this.baseUrl);
   }
 
