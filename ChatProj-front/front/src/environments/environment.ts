@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   userManagerApiUrl: 'http://34.69.232.230:3006',
   chatSocketApiUrl: 'http://34.69.232.230:3007',
-  // serviceUrl: 'http://localhost:8080',
+  // userManagerApiUrl: 'http://localhost:8080',
+  // chatSocketApiUrl: 'http://localhost:8081',
   timeout: 4000,
   retry: 2
 };
